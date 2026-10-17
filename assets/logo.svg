@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="180 270 670 470" role="img" aria-label="CS logo">
+  <defs>
+    <!-- cuts a transparent gap around the S, like the original artwork -->
+    <mask id="cs-gap" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+      <rect width="1024" height="1024" fill="#fff"/>
+      <path d="M662 427H480q-48 0-48 48t48 48h120q64 0 64 67 0 83-64 83H470" fill="none" stroke="#000" stroke-width="84"/>
+      <polygon points="486,631 486,715 424,715" fill="#000"/>
+    </mask>
+  </defs>
+
+  <!-- code brackets -->
+  <g fill="none" stroke="#00d4ff" stroke-width="14">
+    <polyline points="284,440 202,512 284,584"/>
+    <polyline points="740,440 822,512 740,584"/>
+  </g>
+
+  <!-- C + circuit traces -->
+  <g mask="url(#cs-gap)" fill="none" stroke="#00d4ff">
+    <path d="M594 370q0-48-50-48H445q-83 0-83 83v111q0 82 83 82h115q38 0 38-38" stroke-width="54"/>
+    <g stroke-width="7">
+      <polyline points="606,333 656,298 698,298"/>
+      <circle cx="709" cy="298" r="10.5"/>
+      <polyline points="474,652 408,718 343,718"/>
+      <circle cx="332" cy="718" r="10.5"/>
+    </g>
+  </g>
+
+  <!-- S -->
+  <g fill="#d9dce1">
+    <path d="M662 427H480q-48 0-48 48t48 48h120q64 0 64 67 0 83-64 83H480" fill="none" stroke="#d9dce1" stroke-width="54"/>
+    <polygon points="481,646 481,700 446,700"/>
+  </g>
+</svg>
