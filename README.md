@@ -2,7 +2,7 @@
 
 Personal portfolio of **Christian Mandras Sapilan**, a Computer Science student at Biliran Province State University (BiPSU) and IT working student at Xfiber Broadband.
 
-**Live site:** _coming soon (GitHub Pages)_
+**Live site:** https://itsmechanot.github.io · **Testing log:** [TESTING.md](TESTING.md)
 
 ## Sections
 - **Home**: intro, rotating role titles, social links, and a code-style summary card
