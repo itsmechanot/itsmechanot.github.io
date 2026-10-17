@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Christian Mandras Sapilan | Portfolio</title>
+  <meta name="description" content="Portfolio of Christian Mandras Sapilan: projects, certificates, tech stack and contact." />
+  <meta name="theme-color" content="#060a18" />
+  <meta property="og:title" content="Christian Mandras Sapilan | Portfolio" />
+  <meta property="og:description" content="Projects, certificates, tech stack and contact." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/favicon.svg?v=2" type="image/svg+xml" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
+  <!-- ?v=… forces browsers to re-download after changes: bump the number when you edit these files -->
+  <link rel="stylesheet" href="css/style.css?v=4" />
+</head>
+<body class="is-loading">
+
+  <!-- ===== Intro loader ===== -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__icons">
+      <span class="loader__icon" data-icon="code"></span>
+      <span class="loader__icon" data-icon="layers"></span>
+      <span class="loader__icon" data-icon="zap"></span>
+    </div>
+    <div class="loader__title">
+      <span class="loader__line" data-letters="WELCOME TO MY"></span>
+      <span class="loader__line loader__line--glow" data-letters="PORTFOLIO WEBSITE"></span>
+    </div>
+    <div class="loader__pill"><span data-icon="globe"></span><span id="loaderType"></span><span class="caret"></span></div>
+    <div class="loader__bar"><span id="loaderBar"></span></div>
+  </div>
+
+  <!-- ===== Global chrome ===== -->
+  <div class="progress" id="scrollProgress"></div>
+  <div class="bg" aria-hidden="true"><span class="orb orb--1"></span><span class="orb orb--2"></span><span class="orb orb--3"></span></div>
+
+  <header class="nav" id="nav">
+    <a href="#home" class="brand" aria-label="Home">
+      <span class="brand__logo" data-icon="logo"></span>
+      <span class="brand__text" data-bind="brand"></span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Main">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#academic">Academic</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav__actions">
+      <span class="nav__botlabel" id="botLabel" data-bind="botName"></span>
+      <button class="icon-btn icon-btn--glow" id="botToggle" aria-label="Chat with my AI assistant" title="Chat with my AI assistant"><span data-icon="bot"></span></button>
+      <span class="status-pill" id="statusPill"><i class="dot"></i><span>Available</span></span>
+      <button class="icon-btn nav__burger" id="burger" aria-label="Open menu"><span data-icon="menu"></span></button>
+    </div>
+  </header>
+
+  <!-- ===== Chatbot ===== -->
+  <aside class="bot" id="bot" aria-label="AI assistant" hidden>
+    <div class="bot__head">
+      <span class="bot__avatar" data-icon="bot"></span>
+      <div>
+        <small class="mono label">AI Assistant</small>
+        <strong data-bind="botName"></strong>
+      </div>
+      <span class="bot__online"><i class="dot"></i>online</span>
+      <button class="icon-btn icon-btn--sm" id="botClose" aria-label="Close assistant"><span data-icon="x"></span></button>
+    </div>
+    <div class="bot__body" id="botBody"></div>
+    <form class="bot__form" id="botForm">
+      <input id="botInput" type="text" autocomplete="off" aria-label="Ask the assistant a question" placeholder="Ask about skills, projects, contact..." />
+      <button class="btn-send" aria-label="Send"><span data-icon="send"></span></button>
+    </form>
+  </aside>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero section" id="home">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <span class="badge mono" data-reveal><i class="dot"></i>Available for projects</span>
+          <h1 class="hero__title" data-reveal>
+            <span data-bind="titleTop"></span>
+            <span class="grad" data-bind="titleBottom"></span>
+          </h1>
+          <p class="hero__role mono" data-reveal><span id="roleType"></span><span class="caret"></span></p>
+          <p class="hero__bio" data-reveal data-bind-html="heroBio"></p>
+          <div class="btn-row" data-reveal>
+            <a href="#portfolio" class="btn btn--primary">View Projects <span data-icon="external"></span></a>
+            <a href="#contact" class="btn btn--ghost" id="letsTalk">Let's Talk <span data-icon="mail"></span></a>
+          </div>
+          <div class="socials" data-reveal data-socials></div>
+        </div>
+        <div class="code-win" data-reveal="right">
+          <div class="code-win__bar">
+            <i class="dot-red"></i><i class="dot-yellow"></i><i class="dot-green"></i>
+            <span class="mono">portfolio.js</span>
+          </div>
+          <pre class="code-win__body mono" id="codeBlock"></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="section" id="about">
+      <div class="container">
+        <header class="sec-head" data-reveal>
+          <h2><span>About</span> <em>Me</em></h2>
+          <p>Transforming ideas into digital experiences</p>
+        </header>
+        <div class="about">
+          <div class="about__copy" data-reveal="left">
+            <p class="hello">Hello, I'm</p>
+            <h3 class="about__name" data-bind="name"></h3>
+            <p class="about__bio" data-bind-html="aboutBio"></p>
+            <div class="btn-row">
+              <a class="btn btn--purple" id="cvBtn" download><span data-icon="download"></span> Download CV</a>
+              <a href="#portfolio" class="btn btn--ghost"><span data-icon="code"></span> View Projects</a>
+            </div>
+          </div>
+          <div class="about__photo" data-reveal="right">
+            <div class="photo" id="photo"></div>
+          </div>
+        </div>
+        <div class="stats" id="stats"></div>
+      </div>
+    </section>
+
+    <!-- ===== Academic ===== -->
+    <section class="section" id="academic">
+      <div class="container">
+        <header class="sec-head" data-reveal>
+          <h2><span>Academic</span> <em>Foundation</em></h2>
+          <p>Education and technical growth journey</p>
+        </header>
+        <div class="degree card" data-reveal id="degree"></div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- ===== Portfolio ===== -->
+    <section class="section" id="portfolio">
+      <div class="container">
+        <header class="sec-head" data-reveal>
+          <h2><span>Portfolio</span> <em>Showcase</em></h2>
+          <p>Explore my journey through projects, certifications, and technical expertise. Each section represents a milestone in my continuous learning path.</p>
+        </header>
+        <div class="tabs mono" role="tablist" data-reveal>
+          <button role="tab" class="tab active" data-tab="projects" aria-selected="true" aria-controls="panel-projects"><span data-icon="code"></span>Projects</button>
+          <button role="tab" class="tab" data-tab="experience" aria-selected="false" aria-controls="panel-experience"><span data-icon="briefcase"></span>Experience</button>
+          <button role="tab" class="tab" data-tab="certificates" aria-selected="false" aria-controls="panel-certificates"><span data-icon="award"></span>Certificates</button>
+          <button role="tab" class="tab" data-tab="stack" aria-selected="false" aria-controls="panel-stack"><span data-icon="box"></span>Tech Stack</button>
+        </div>
+        <div class="panel active" id="panel-projects" role="tabpanel"><div class="projects" id="projects"></div></div>
+        <div class="panel" id="panel-experience" role="tabpanel"><div class="exps" id="experience"></div></div>
+        <div class="panel" id="panel-certificates" role="tabpanel"><div class="certs" id="certs"></div></div>
+        <div class="panel" id="panel-stack" role="tabpanel"><div id="stack"></div></div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <header class="sec-head" data-reveal>
+          <h2><span>Contact</span> <em>Me</em></h2>
+          <p>Have a project in mind? Let's build it together.</p>
+        </header>
+        <div class="contact">
+          <div class="contact__info" data-reveal="left">
+            <h3>Let's work together</h3>
+            <p class="muted">I'm always looking for exciting new projects. Whether you need a website, a web app, or just want to collaborate, feel free to reach out!</p>
+            <div class="info-item"><span class="info-item__icon" data-icon="mail"></span><div><small class="mono label">Email</small><a data-bind="email" data-href="mailto"></a></div></div>
+            <div class="info-item"><span class="info-item__icon" data-icon="pin"></span><div><small class="mono label">Location</small><a data-bind="location" data-href="map" target="_blank" rel="noopener" title="Open in Google Maps"></a></div></div>
+            <small class="mono label find">Find me on</small>
+            <div class="socials" data-socials></div>
+            <div class="avail card">
+              <span class="mono avail__tag"><i class="dot"></i>Available for work</span>
+              <p id="availNote">Open to freelance projects, internships, or full-time opportunities.</p>
+            </div>
+          </div>
+          <form class="form" id="contactForm" data-reveal="right">
+            <label><small class="mono label">Your Name</small><input name="name" required placeholder="John Doe" /></label>
+            <label><small class="mono label">Email Address</small><input name="email" type="email" required placeholder="hello@example.com" /></label>
+            <label><small class="mono label">Subject</small><input name="subject" placeholder="Project inquiry..." /></label>
+            <label><small class="mono label">Message</small><textarea name="message" rows="6" required placeholder="Tell me about your project..." class="mono"></textarea></label>
+            <button class="btn btn--primary btn--block"><span data-icon="send"></span> Send Message</button>
+            <p class="form__note mono" id="formNote" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <a href="#home" class="brand"><span class="brand__logo" data-icon="logo"></span><span class="brand__text" data-bind="brand"></span></a>
+        <p class="footer__name" data-bind="name"></p>
+        <a class="footer__loc mono" data-href="map" target="_blank" rel="noopener" title="Open in Google Maps"><span data-icon="pin"></span><span data-bind="location"></span></a>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <ul class="footer__links">
+          <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#academic">Academic</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Connect</h3>
+        <a class="footer__mail" data-bind="email" data-href="mailto"></a>
+        <div class="socials socials--plain" data-socials></div>
+      </div>
+    </div>
+    <p class="footer__copy mono">© <span id="year"></span> <strong data-bind="name"></strong>. All rights reserved.</p>
+  </footer>
+
+  <script src="js/data.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
+</body>
+</html>
