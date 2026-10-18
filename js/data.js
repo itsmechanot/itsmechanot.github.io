@@ -210,6 +210,17 @@ const SITE = {
       ],
     },
     {
+      title: "RideAxis: Terminal Van Ride-Sharing Platform", status: "deployed", period: "2025",
+      description: "\"Tired of going to the terminal just to check rides?\" RideAxis lets passengers see available van rides online with real-time seat availability on a visual van seat layout, driver profiles with 1–5 star ratings, and a terminal locator. Drivers manage their trips (scheduled → waiting → departed → completed) with GPS tracking shown on a live route map, while terminal admins approve drivers, assign schedules and monitor a statistics dashboard. Deployed on Render with PostgreSQL, Gunicorn and WhiteNoise. The free host sleeps when idle, so the live demo can take about a minute to wake up.",
+      tags: ["Django", "PostgreSQL", "Render", "GPS Tracking"],
+      live: "https://rideaxis-1.onrender.com/", repo: "https://github.com/itsmechanot/rideaxis",
+      images: [
+        "assets/projects/rideaxis-1.jpg", // promotional poster
+        "assets/projects/rideaxis-2.jpg", // live login page
+        "assets/projects/rideaxis-3.jpg", // live home page
+      ],
+    },
+    {
       title: "Serenity Tours: Biliran Tourism Website", status: "completed", period: "2024",
       description: "A Django tourism website promoting Biliran: \"Unveil the Beauty of Biliran | Book Your Island Experience\". It features destinations across the province (Tinago Falls, Talahid Beach in Almeria, Napo Falls and Acaban Cave in Culaba), tour services from custom guided and private group tours to adventure trips, Half-day / Full-day / 2 Days 1 Night pricing, customer feedback and a contact section, built with Bootstrap, AOS scroll animations and a Swiper carousel, plus a Django-managed records table with add, update and delete.",
       tags: ["Django", "Bootstrap", "Tourism"], live: "", repo: "",
