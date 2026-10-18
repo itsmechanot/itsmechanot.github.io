@@ -208,7 +208,7 @@ const SITE = {
   certificates: [
     {
       title: "Deye Three Phase Inverter Training", issuer: "Deye Philippines × OnePoint Solar Marketing", year: "Oct 2026",
-      description: "Certificate of Attendance for the exclusive Deye Three Phase Training held in Cebu City on October 16–17, 2026, covering the installation and setup of Deye three-phase hybrid inverters.",
+      description: "Two-day Deye Three Phase Training in Cebu City (October 16–17, 2026). Day 1 covered the technical discussion of Deye three-phase solar inverter systems; Day 2 continued the discussion and ended with a hands-on installation session.",
       images: [
         "assets/certificates/deye-training-1.jpg", // the certificate
         "assets/certificates/deye-training-2.jpg", // at the training venue
