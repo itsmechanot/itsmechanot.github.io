@@ -205,8 +205,8 @@ const SITE = {
     },
     {
       title: "Quad-Drag-Do: Completing the Square Math Game", status: "completed", period: "2026",
-      description: "A game-based learning app that teaches students to solve quadratic equations by completing the square, developed for the research study \"Development and Validation of Quad-Drag-Do\". Students drag terms through each step on auto-generated equations across difficulty levels with a 5-life system, plus lessons and learning materials. Teachers manage classrooms, admissions and activities (quizzes, homework, exams), and an admin approves teacher accounts.",
-      tags: ["Flutter", "Firebase", "Game-Based Learning"], live: "", repo: "",
+      description: "Client project: I was the lead developer of this game-based learning app for a 4th-year research study by Math Major students of BiPSU School of Teacher Education (STED), \"Development and Validation of Quad-Drag-Do\". Students solve auto-generated quadratic equations by completing the square, dragging terms through each step across difficulty levels with a 5-life system, plus lessons and learning materials. Teachers manage classrooms, admissions and activities (quizzes, homework, exams), and an admin approves teacher accounts.",
+      tags: ["Client Project", "Lead Developer", "Flutter", "Firebase"], live: "", repo: "",
       images: [
         "assets/projects/quaddragdo-1.jpg", // app icon on the game background
       ],
