@@ -343,8 +343,9 @@ svg.i { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width:
 .exp__logo { width: 64px; height: 64px; flex-shrink: 0; border-radius: 16px; overflow: hidden; display: grid; place-items: center;
   background: radial-gradient(circle at 30% 25%, #2a3d8f, #12183a 75%); border: 1px solid var(--border-2); }
 .exp__logo img { width: 100%; height: 100%; object-fit: contain; }
-.exp__logo--img { width: auto; max-width: 170px; background: none; }
-.exp__logo--img img { width: auto; max-width: 100%; }
+/* logo images: fixed height, natural width (capped), so wide and square logos both fit without clipping */
+.exp__logo--img { width: fit-content; max-width: 170px; background: none; }
+.exp__logo--img img { height: 64px; width: auto; max-width: 170px; }
 .exp__logo span { font-family: var(--f-display); font-weight: 800; font-size: 20px; color: var(--cyan); }
 .exp__period { font-size: 12px; color: var(--cyan); letter-spacing: .06em; }
 .exp h3 { font-size: 19px; margin: 6px 0 4px; }
