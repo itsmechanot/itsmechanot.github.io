@@ -210,6 +210,15 @@ const SITE = {
       ],
     },
     {
+      title: "LGU-DPWH IRMS: Infrastructure Reporting and Management System", status: "completed", period: "2026",
+      description: "A Django system built for DPWH and the LGUs of Biliran. Citizens report road and infrastructure issues with photos, GPS location and severity, and get a tracking code. LGU reviewers for each of the 8 municipalities endorse or return reports, and DPWH staff verify them and turn them into project proposals that move through the full procurement lifecycle: approval, bidding (RA 9184), award, notice to proceed, progress tracking, completion and the defects liability period. A public Leaflet map shows finished and ongoing projects, and the admin portal has Chart.js analytics.",
+      tags: ["Django", "Leaflet", "Chart.js", "Gov Tech"], live: "", repo: "",
+      images: [
+        "assets/projects/dpwh-irms-1.jpg", // public home page
+        "assets/projects/dpwh-irms-2.jpg", // admin dashboard (demo data)
+      ],
+    },
+    {
       title: "RideAxis: Terminal Van Ride-Sharing Platform", status: "deployed", period: "2025",
       description: "Solo project, designed, built and deployed by me. \"Tired of going to the terminal just to check rides?\" RideAxis lets passengers see available van rides online with real-time seat availability on a visual van seat layout, driver profiles with 1–5 star ratings, and a terminal locator. Drivers manage their trips (scheduled → waiting → departed → completed) with GPS tracking shown on a live route map, while terminal admins approve drivers, assign schedules and monitor a statistics dashboard. Deployed on Render with PostgreSQL, Gunicorn and WhiteNoise. The free host sleeps when idle, so the live demo can take about a minute to wake up.",
       tags: ["Solo Project", "Django", "PostgreSQL", "Render"],
