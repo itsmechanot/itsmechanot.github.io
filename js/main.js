@@ -152,7 +152,12 @@
     </div>`;
 
   const STATUS = { deployed: "Deployed", developing: "Developing", testing: "Under Testing", completed: "Completed" };
-  $("#projects").innerHTML = S.projects.map((p, i) => {
+  // Projects are shown in two labelled groups, in the order listed in data.js.
+  const PROJECT_GROUPS = [
+    { type: "software", title: "Software Development", icon: "code", sub: "Web systems and mobile apps I've designed and built" },
+    { type: "field", title: "IT & Field Installation", icon: "wifi", sub: "Hands-on network, solar, satellite and security installations" },
+  ];
+  const projectCard = (p, i) => {
     const st = STATUS[p.status] ? p.status : "developing";
     const imgs = p.images || [];
     const media = imgs.length ? sliderHTML(imgs, p.title) : `<div class="project__ph">${icon("code")}</div>`;
@@ -173,6 +178,21 @@
         </div>` : ""}
       </div>
     </article>`;
+  };
+  $("#projects").innerHTML = PROJECT_GROUPS.map(g => {
+    const list = S.projects.filter(p => (p.type || "software") === g.type);
+    if (!list.length) return "";
+    return `
+    <div class="project-group">
+      <header class="project-group__head">
+        <span class="project-group__icon">${icon(g.icon)}</span>
+        <div>
+          <h3>${g.title} <span class="project-group__count mono">${list.length}</span></h3>
+          <p>${g.sub}</p>
+        </div>
+      </header>
+      <div class="projects">${list.map(projectCard).join("")}</div>
+    </div>`;
   }).join("");
 
   // Carousel behaviour: auto-advance every 3s (5s on hover), dots + swipe.

@@ -131,6 +131,7 @@ const SITE = {
   ],
 
   // ---- Portfolio: Projects ----
+  // type:   "software" (Software Development group) | "field" (IT & Field Installation group)
   // status: "deployed" | "developing" | "testing" | "completed"
   // images: put the pictures in assets/projects/ and list them in order. Two or more slide automatically:
   //   images: ["assets/projects/kacific-1.jpg", "assets/projects/kacific-2.jpg", "assets/projects/kacific-3.jpg"],
@@ -138,7 +139,67 @@ const SITE = {
   // To add a project, copy one { ... } block, paste it below and change the text.
   projects: [
     {
-      title: "Free Wi-Fi for All: Kacific Satellite Sites", status: "completed", period: "2022 — 2023",
+      title: "LGU-DPWH IRMS: Infrastructure Reporting and Management System", type: "software", status: "testing", period: "2026",
+      description: "Solo project, currently under testing by DPWH. A Django system built for DPWH and the LGUs of Biliran. Citizens report road and infrastructure issues with photos, GPS location and severity, and get a tracking code. LGU reviewers for each of the 8 municipalities endorse or return reports, and DPWH staff verify them and turn them into project proposals that move through the full procurement lifecycle: approval, bidding (RA 9184), award, notice to proceed, progress tracking, completion and the defects liability period. A public Leaflet map shows finished and ongoing projects, and the admin portal has Chart.js analytics.",
+      tags: ["Solo Project", "Django", "Leaflet", "Gov Tech"], live: "", repo: "",
+      images: [
+        "assets/projects/dpwh-irms-1.jpg", // public home page
+        "assets/projects/dpwh-irms-2.jpg", // admin dashboard (demo data)
+      ],
+    },
+    {
+      title: "RideAxis: Terminal Van Ride-Sharing Platform", type: "software", status: "deployed", period: "2025",
+      description: "Solo project, designed, built and deployed by me. \"Tired of going to the terminal just to check rides?\" RideAxis lets passengers see available van rides online with real-time seat availability on a visual van seat layout, driver profiles with 1–5 star ratings, and a terminal locator. Drivers manage their trips (scheduled → waiting → departed → completed) with GPS tracking shown on a live route map, while terminal admins approve drivers, assign schedules and monitor a statistics dashboard. Deployed on Render with PostgreSQL, Gunicorn and WhiteNoise. The free host sleeps when idle, so the live demo can take about a minute to wake up.",
+      tags: ["Solo Project", "Django", "PostgreSQL", "Render"],
+      live: "https://rideaxis-1.onrender.com/", repo: "https://github.com/itsmechanot/rideaxis",
+      images: [
+        "assets/projects/rideaxis-1.jpg", // promotional poster
+        "assets/projects/rideaxis-3.jpg", // home page
+        "assets/projects/rideaxis-2.jpg", // login page
+      ],
+    },
+    {
+      title: "Quad-Drag-Do: Completing the Square Math Game", type: "software", status: "completed", period: "2026",
+      description: "Client project: I was the lead developer of this game-based learning app for a 4th-year research study by Math Major students of BiPSU School of Teacher Education (STED), \"Development and Validation of Quad-Drag-Do\". Students solve auto-generated quadratic equations by completing the square, dragging terms through each step across difficulty levels with a 5-life system, plus lessons and learning materials. Teachers manage classrooms, admissions and activities (quizzes, homework, exams), and an admin approves teacher accounts.",
+      tags: ["Client Project", "Lead Developer", "Flutter", "Firebase"], live: "", repo: "",
+      images: [
+        "assets/projects/quaddragdo-1.jpg", // app icon on the game background
+      ],
+    },
+    {
+      title: "CocoScan: Coconut Leaf Disease Scanner", type: "software", status: "completed", period: "2025",
+      description: "My first Flutter app, built with my team in 2nd year. Farmers scan a coconut leaf with the camera or upload a photo; one on-device AI model first checks that the image is a leaf, then a second model classifies it as Healthy, Yellowing, Caterpillar damage or Flaccidity with a confidence score and recommended actions. Scans are saved to a local history that works offline.",
+      tags: ["Flutter", "TensorFlow Lite", "Hive"], live: "", repo: "",
+      images: [
+        "assets/projects/cocoscan-1.png",   // app logo
+        "assets/academic/year-2.jpg",       // team presentation
+      ],
+    },
+    {
+      title: "Pahatod: Ride-Hailing Web App", type: "software", status: "completed", period: "2024 — 2025",
+      description: "A Django ride-hailing system with separate passenger and driver accounts. Passengers request rides on a Leaflet + OpenStreetMap map, where typed pickup and drop-off addresses are geocoded with Nominatim and pinned as markers, then track, cancel or review their bookings. Drivers register with their license, vehicle type and plate number, see their live location on a map dashboard, accept pending requests and mark trips completed.",
+      tags: ["Django", "Python", "Leaflet", "SQLite"], live: "", repo: "",
+      images: [
+        "assets/projects/pahatod-cover.svg", // illustrated cover
+        "assets/projects/pahatod-2.jpg",     // Request a Ride form + Leaflet map
+        "assets/projects/pahatod-3.jpg",     // driver's Accept Rides list
+      ],
+    },
+    {
+      title: "Serenity Tours: Biliran Tourism Website", type: "software", status: "completed", period: "2024",
+      description: "A Django tourism website promoting Biliran: \"Unveil the Beauty of Biliran | Book Your Island Experience\". It features destinations across the province (Tinago Falls, Talahid Beach in Almeria, Napo Falls and Acaban Cave in Culaba), tour services from custom guided and private group tours to adventure trips, Half-day / Full-day / 2 Days 1 Night pricing, customer feedback and a contact section, built with Bootstrap, AOS scroll animations and a Swiper carousel, plus a Django-managed records table with add, update and delete.",
+      tags: ["Django", "Bootstrap", "Tourism"], live: "", repo: "",
+      images: [
+        "assets/projects/serenity-tours-1.jpg", // home page hero
+      ],
+    },
+    {
+      title: "Web Project", type: "software", status: "developing", period: "20XX",
+      description: "PLACEHOLDER: a website or web app you built (what it does and who it's for).",
+      tags: ["PHP", "MySQL", "JavaScript"], images: [], live: "", repo: "",
+    },
+    {
+      title: "Free Wi-Fi for All: Kacific Satellite Sites", type: "field", status: "completed", period: "2022 — 2023",
       description: "Installed Kacific satellite internet sites for the government's Free Wi-Fi for All program under former President Rodrigo Roa Duterte, connecting communities in Biliran, Samar, Southern Leyte and Abuyog.",
       tags: ["Kacific", "Satellite Internet", "Network Setup"], live: "", repo: "",
       images: [
@@ -152,12 +213,7 @@ const SITE = {
       ],
     },
     {
-      title: "Starlink Installations", status: "completed", period: "20XX",
-      description: "PLACEHOLDER: where you installed Starlink, for whom, and how many sites.",
-      tags: ["Starlink", "Satellite Internet"], images: [], live: "", repo: "",
-    },
-    {
-      title: "Solar Power Systems", status: "completed", period: "20XX",
+      title: "Solar Power Systems", type: "field", status: "completed", period: "20XX",
       description: "Installed solar power systems in Biliran: mounting rooftop PV panel arrays, setting up hybrid inverters (Deye, Demuda) with lithium battery storage (SRNE, Retank), and wiring labeled DC/AC protection boxes with isolators, breakers and surge protection devices.",
       tags: ["Solar PV", "Deye", "SRNE", "Lithium Battery"], live: "", repo: "",
       images: [
@@ -172,7 +228,7 @@ const SITE = {
       ],
     },
     {
-      title: "Barangay CCTV: Poblacion, Culaba, Biliran", status: "completed", period: "Sep 14, 2026",
+      title: "Barangay CCTV: Poblacion, Culaba, Biliran", type: "field", status: "completed", period: "Sep 14, 2026",
       description: "Installed 4 Hikvision Turbo HD 2MP color cameras for the barangay of Poblacion, Culaba, Biliran. Mounted the cameras on utility and streetlight poles, ran the cabling with HD video baluns and weatherproof junction boxes, and connected the new feeds to the barangay's monitoring station for 24/7 street coverage.",
       tags: ["Hikvision", "CCTV", "Turbo HD", "4 Cameras"], live: "", repo: "",
       images: [
@@ -183,7 +239,7 @@ const SITE = {
       ],
     },
     {
-      title: "PisoWifi Setups", status: "completed", period: "20XX",
+      title: "PisoWifi Setups", type: "field", status: "completed", period: "20XX",
       description: "Installed Xfiber PisoWifi coin-operated Wi-Fi machines across Biliran and Leyte. Assembled and wired each LPB PisoWifi kit (controller board and coin acceptor), mounted outdoor access points for wider coverage, and set up the LPB captive portal where customers insert coins to buy internet time.",
       tags: ["Xfiber PisoWifi", "LPB", "Access Point"], live: "", repo: "",
       images: [
@@ -196,64 +252,9 @@ const SITE = {
       ],
     },
     {
-      title: "Web Project", status: "developing", period: "20XX",
-      description: "PLACEHOLDER: a website or web app you built (what it does and who it's for).",
-      tags: ["PHP", "MySQL", "JavaScript"], images: [], live: "", repo: "",
-    },
-    {
-      title: "CocoScan: Coconut Leaf Disease Scanner", status: "completed", period: "2025",
-      description: "My first Flutter app, built with my team in 2nd year. Farmers scan a coconut leaf with the camera or upload a photo; one on-device AI model first checks that the image is a leaf, then a second model classifies it as Healthy, Yellowing, Caterpillar damage or Flaccidity with a confidence score and recommended actions. Scans are saved to a local history that works offline.",
-      tags: ["Flutter", "TensorFlow Lite", "Hive"], live: "", repo: "",
-      images: [
-        "assets/projects/cocoscan-1.png",   // app logo
-        "assets/academic/year-2.jpg",       // team presentation
-      ],
-    },
-    {
-      title: "LGU-DPWH IRMS: Infrastructure Reporting and Management System", status: "testing", period: "2026",
-      description: "Solo project, currently under testing by DPWH. A Django system built for DPWH and the LGUs of Biliran. Citizens report road and infrastructure issues with photos, GPS location and severity, and get a tracking code. LGU reviewers for each of the 8 municipalities endorse or return reports, and DPWH staff verify them and turn them into project proposals that move through the full procurement lifecycle: approval, bidding (RA 9184), award, notice to proceed, progress tracking, completion and the defects liability period. A public Leaflet map shows finished and ongoing projects, and the admin portal has Chart.js analytics.",
-      tags: ["Solo Project", "Django", "Leaflet", "Gov Tech"], live: "", repo: "",
-      images: [
-        "assets/projects/dpwh-irms-1.jpg", // public home page
-        "assets/projects/dpwh-irms-2.jpg", // admin dashboard (demo data)
-      ],
-    },
-    {
-      title: "RideAxis: Terminal Van Ride-Sharing Platform", status: "deployed", period: "2025",
-      description: "Solo project, designed, built and deployed by me. \"Tired of going to the terminal just to check rides?\" RideAxis lets passengers see available van rides online with real-time seat availability on a visual van seat layout, driver profiles with 1–5 star ratings, and a terminal locator. Drivers manage their trips (scheduled → waiting → departed → completed) with GPS tracking shown on a live route map, while terminal admins approve drivers, assign schedules and monitor a statistics dashboard. Deployed on Render with PostgreSQL, Gunicorn and WhiteNoise. The free host sleeps when idle, so the live demo can take about a minute to wake up.",
-      tags: ["Solo Project", "Django", "PostgreSQL", "Render"],
-      live: "https://rideaxis-1.onrender.com/", repo: "https://github.com/itsmechanot/rideaxis",
-      images: [
-        "assets/projects/rideaxis-1.jpg", // promotional poster
-        "assets/projects/rideaxis-3.jpg", // home page
-        "assets/projects/rideaxis-2.jpg", // login page
-      ],
-    },
-    {
-      title: "Serenity Tours: Biliran Tourism Website", status: "completed", period: "2024",
-      description: "A Django tourism website promoting Biliran: \"Unveil the Beauty of Biliran | Book Your Island Experience\". It features destinations across the province (Tinago Falls, Talahid Beach in Almeria, Napo Falls and Acaban Cave in Culaba), tour services from custom guided and private group tours to adventure trips, Half-day / Full-day / 2 Days 1 Night pricing, customer feedback and a contact section, built with Bootstrap, AOS scroll animations and a Swiper carousel, plus a Django-managed records table with add, update and delete.",
-      tags: ["Django", "Bootstrap", "Tourism"], live: "", repo: "",
-      images: [
-        "assets/projects/serenity-tours-1.jpg", // home page hero
-      ],
-    },
-    {
-      title: "Pahatod: Ride-Hailing Web App", status: "completed", period: "2024 — 2025",
-      description: "A Django ride-hailing system with separate passenger and driver accounts. Passengers request rides on a Leaflet + OpenStreetMap map, where typed pickup and drop-off addresses are geocoded with Nominatim and pinned as markers, then track, cancel or review their bookings. Drivers register with their license, vehicle type and plate number, see their live location on a map dashboard, accept pending requests and mark trips completed.",
-      tags: ["Django", "Python", "Leaflet", "SQLite"], live: "", repo: "",
-      images: [
-        "assets/projects/pahatod-cover.svg", // illustrated cover
-        "assets/projects/pahatod-2.jpg",     // Request a Ride form + Leaflet map
-        "assets/projects/pahatod-3.jpg",     // driver's Accept Rides list
-      ],
-    },
-    {
-      title: "Quad-Drag-Do: Completing the Square Math Game", status: "completed", period: "2026",
-      description: "Client project: I was the lead developer of this game-based learning app for a 4th-year research study by Math Major students of BiPSU School of Teacher Education (STED), \"Development and Validation of Quad-Drag-Do\". Students solve auto-generated quadratic equations by completing the square, dragging terms through each step across difficulty levels with a 5-life system, plus lessons and learning materials. Teachers manage classrooms, admissions and activities (quizzes, homework, exams), and an admin approves teacher accounts.",
-      tags: ["Client Project", "Lead Developer", "Flutter", "Firebase"], live: "", repo: "",
-      images: [
-        "assets/projects/quaddragdo-1.jpg", // app icon on the game background
-      ],
+      title: "Starlink Installations", type: "field", status: "completed", period: "20XX",
+      description: "PLACEHOLDER: where you installed Starlink, for whom, and how many sites.",
+      tags: ["Starlink", "Satellite Internet"], images: [], live: "", repo: "",
     },
   ],
 
