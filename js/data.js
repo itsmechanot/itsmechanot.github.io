@@ -172,7 +172,7 @@ const SITE = {
       ],
     },
     {
-      title: "Barangay CCTV: Poblacion, Culaba, Biliran", status: "completed", period: "2026",
+      title: "Barangay CCTV: Poblacion, Culaba, Biliran", status: "completed", period: "Sep 14, 2026",
       description: "Installed 4 Hikvision Turbo HD 2MP color cameras for the barangay of Poblacion, Culaba, Biliran. Mounted the cameras on utility and streetlight poles, ran the cabling with HD video baluns and weatherproof junction boxes, and connected the new feeds to the barangay's monitoring station for 24/7 street coverage.",
       tags: ["Hikvision", "CCTV", "Turbo HD", "4 Cameras"], live: "", repo: "",
       images: [
