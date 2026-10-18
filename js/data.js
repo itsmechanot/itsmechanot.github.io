@@ -201,20 +201,19 @@ const SITE = {
   ],
 
   // ---- Portfolio: Certificates ----
-  // image: put the certificate picture in assets/certificates/ and write its path,
-  //        e.g. "assets/certificates/kacific-training.jpg" (leave "" for a placeholder)
-  // url:   optional link to verify the certificate online
+  // images: pictures in assets/certificates/, listed in order. Two or more slide automatically (like projects).
+  // pdf:    optional original certificate file, shown as a "View PDF" link
+  // url:    optional link to verify the certificate online
   // To add a certificate, copy one { ... } block, paste it below and change the text.
   certificates: [
     {
-      title: "Certificate Title", issuer: "Issuer", year: "20XX",       // PLACEHOLDER
-      description: "PLACEHOLDER: what this certificate is for or what you learned.",
-      image: "", url: "",
-    },
-    {
-      title: "Certificate Title", issuer: "Issuer", year: "20XX",       // PLACEHOLDER
-      description: "PLACEHOLDER: what this certificate is for or what you learned.",
-      image: "", url: "",
+      title: "Deye Three Phase Inverter Training", issuer: "Deye Philippines × OnePoint Solar Marketing", year: "Oct 2026",
+      description: "Certificate of Attendance for the exclusive Deye Three Phase Training held in Cebu City on October 16–17, 2026, covering the installation and setup of Deye three-phase hybrid inverters.",
+      images: [
+        "assets/certificates/deye-training-1.jpg", // the certificate
+        "assets/certificates/deye-training-2.jpg", // at the training venue
+      ],
+      pdf: "assets/certificates/deye-training-certificate.pdf", url: "",
     },
   ],
 

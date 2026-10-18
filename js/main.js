@@ -139,20 +139,23 @@
     </div>`).join("");
 
   /* ---------------- Portfolio ---------------- */
+  // Photo carousel markup shared by projects and certificates.
+  // zoom = true lets each photo open full size on click (used for certificates, so the text is readable).
+  const sliderHTML = (imgs, label, zoom = false) => `
+    <div class="slider" data-slider>
+      <div class="slider__track">${imgs.map((src, k) => `
+        <div class="slide">
+          <div class="slide__bg" style="background-image:url('${esc(src)}')"></div>
+          <img src="${esc(src)}" alt="${esc(label)}, photo ${k + 1} of ${imgs.length}" loading="lazy"${zoom ? ` data-zoom="${esc(src)}"` : ""} />
+        </div>`).join("")}</div>
+      ${imgs.length > 1 ? `<div class="slider__dots">${imgs.map((_, k) => `<button class="${k ? "" : "active"}" aria-label="Show photo ${k + 1}"></button>`).join("")}</div>` : ""}
+    </div>`;
+
   const STATUS = { deployed: "Deployed", developing: "Developing", completed: "Completed" };
   $("#projects").innerHTML = S.projects.map((p, i) => {
     const st = STATUS[p.status] ? p.status : "developing";
     const imgs = p.images || [];
-    const media = imgs.length
-      ? `<div class="slider" data-slider>
-           <div class="slider__track">${imgs.map((src, k) => `
-             <div class="slide">
-               <div class="slide__bg" style="background-image:url('${esc(src)}')"></div>
-               <img src="${esc(src)}" alt="${esc(p.title)}, photo ${k + 1} of ${imgs.length}" loading="lazy" />
-             </div>`).join("")}</div>
-           ${imgs.length > 1 ? `<div class="slider__dots">${imgs.map((_, k) => `<button class="${k ? "" : "active"}" aria-label="Show photo ${k + 1}"></button>`).join("")}</div>` : ""}
-         </div>`
-      : `<div class="project__ph">${icon("code")}</div>`;
+    const media = imgs.length ? sliderHTML(imgs, p.title) : `<div class="project__ph">${icon("code")}</div>`;
     return `
     <article class="project card" style="--d:${i * 0.1}s">
       <div class="project__media">
@@ -172,10 +175,11 @@
     </article>`;
   }).join("");
 
-  // project image sliders: auto-advance every 3s (5s on hover), dots + swipe.
+  // Carousel behaviour: auto-advance every 3s (5s on hover), dots + swipe.
   // A copy of the first photo sits after the last one, so looping always slides forward
   // (last → copy of first), then silently snaps back to the real first photo.
-  $$("[data-slider]").forEach(sl => {
+  // Called once all carousels (projects + certificates) are on the page.
+  const initSliders = () => $$("[data-slider]").forEach(sl => {
     const track = $(".slider__track", sl), dots = $$(".slider__dots button", sl), n = track.children.length;
     if (n < 2) return;
     const clone = track.children[0].cloneNode(true);
@@ -228,26 +232,30 @@
     </article>`;
   }).join("");
 
-  $("#certs").innerHTML = S.certificates.map((c, i) => `
+  $("#certs").innerHTML = S.certificates.map((c, i) => {
+    const imgs = c.images || [];
+    return `
     <article class="cert card" style="--d:${i * 0.08}s">
-      ${c.image
-        ? `<button class="cert__media" data-zoom="${esc(c.image)}" aria-label="View ${esc(c.title)} full size">
-             <img src="${esc(c.image)}" alt="${esc(c.title)} certificate" loading="lazy" />
-             <span class="cert__zoom">${icon("external")} View full size</span>
-           </button>`
-        : `<div class="cert__media cert__media--ph">${icon("award")}<small class="mono">Certificate image coming soon</small></div>`}
-      <span class="cert__num">${String(i + 1).padStart(2, "0")}</span>
+      <div class="cert__media${imgs.length ? "" : " cert__media--ph"}">
+        ${imgs.length ? sliderHTML(imgs, c.title, true) : `${icon("award")}<small class="mono">Certificate image coming soon</small>`}
+        <span class="cert__num">${String(i + 1).padStart(2, "0")}</span>
+      </div>
       <div class="cert__body">
         <small class="cert__meta mono">${esc(c.issuer)} · ${esc(c.year)}</small>
         <h3>${esc(c.title)}</h3>
         ${c.description ? `<p>${esc(c.description)}</p>` : ""}
-        ${c.url ? `<div class="project__links"><a href="${esc(c.url)}" target="_blank" rel="noopener">Verify ${icon("external")}</a></div>` : ""}
+        ${c.pdf || c.url ? `<div class="project__links">
+          ${c.pdf ? `<a href="${esc(c.pdf)}" target="_blank" rel="noopener">View PDF ${icon("external")}</a>` : ""}
+          ${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">Verify ${icon("external")}</a>` : ""}
+        </div>` : ""}
       </div>
-    </article>`).join("");
+    </article>`;
+  }).join("");
   if (!S.certificates.length) { // no finished certificates yet: hide the tab instead of showing an empty panel
     $('[data-tab="certificates"]').remove();
     $("#panel-certificates").remove();
   }
+  initSliders();
 
   // full-size certificate viewer
   const lb = document.createElement("div");
@@ -260,7 +268,7 @@
     const z = e.target.closest("[data-zoom]");
     if (z) {
       const img = $("img", lb);
-      img.src = z.dataset.zoom; img.alt = (z.matches("img") ? z : $("img", z)).alt;
+      img.src = z.dataset.zoom; img.alt = z.alt;
       lb.hidden = false; document.body.style.overflow = "hidden";
     } else if (!lb.hidden && !e.target.closest(".lightbox img")) closeLb();
   });
