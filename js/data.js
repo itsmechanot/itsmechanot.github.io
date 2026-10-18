@@ -210,6 +210,14 @@ const SITE = {
       ],
     },
     {
+      title: "Serenity Tours: Biliran Tourism Website", status: "completed", period: "2024",
+      description: "A Django tourism website promoting Biliran: \"Unveil the Beauty of Biliran | Book Your Island Experience\". It features destinations across the province (Tinago Falls, Talahid Beach in Almeria, Napo Falls and Acaban Cave in Culaba), tour services from custom guided and private group tours to adventure trips, Half-day / Full-day / 2 Days 1 Night pricing, customer feedback and a contact section, built with Bootstrap, AOS scroll animations and a Swiper carousel, plus a Django-managed records table with add, update and delete.",
+      tags: ["Django", "Bootstrap", "Tourism"], live: "", repo: "",
+      images: [
+        "assets/projects/serenity-tours-1.jpg", // home page hero
+      ],
+    },
+    {
       title: "Pahatod: Ride-Hailing Web App", status: "completed", period: "2024 — 2025",
       description: "A Django ride-hailing system with separate passenger and driver accounts. Passengers request rides on a Leaflet + OpenStreetMap map, where typed pickup and drop-off addresses are geocoded with Nominatim and pinned as markers, then track, cancel or review their bookings. Drivers register with their license, vehicle type and plate number, see their live location on a map dashboard, accept pending requests and mark trips completed.",
       tags: ["Django", "Python", "Leaflet", "SQLite"], live: "", repo: "",
