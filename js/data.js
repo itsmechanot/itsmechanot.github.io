@@ -203,6 +203,14 @@ const SITE = {
         "assets/academic/year-2.jpg",       // team presentation
       ],
     },
+    {
+      title: "Quad-Drag-Do: Completing the Square Math Game", status: "completed", period: "2026",
+      description: "A game-based learning app that teaches students to solve quadratic equations by completing the square, developed for the research study \"Development and Validation of Quad-Drag-Do\". Students drag terms through each step on auto-generated equations across difficulty levels with a 5-life system, plus lessons and learning materials. Teachers manage classrooms, admissions and activities (quizzes, homework, exams), and an admin approves teacher accounts.",
+      tags: ["Flutter", "Firebase", "Game-Based Learning"], live: "", repo: "",
+      images: [
+        "assets/projects/quaddragdo-1.jpg", // app icon on the game background
+      ],
+    },
   ],
 
   // ---- Portfolio: Certificates ----
