@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Pahatod ride-hailing cover">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1430"/><stop offset="1" stop-color="#060a18"/>
+    </linearGradient>
+    <linearGradient id="route" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#22c55e"/><stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#1b2a52" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="720" fill="url(#bg)"/>
+  <rect width="1280" height="720" fill="url(#grid)" opacity=".7"/>
+
+  <!-- map streets -->
+  <g fill="none" stroke="#24345f" stroke-width="22" stroke-linecap="round">
+    <path d="M-20 560 L420 470 L720 520 L1300 380"/>
+    <path d="M300 -20 L380 260 L330 740"/>
+    <path d="M860 -20 L820 300 L960 740"/>
+  </g>
+
+  <!-- route -->
+  <path d="M250 540 C 380 520, 400 380, 560 360 S 820 300, 900 180" fill="none" stroke="url(#route)" stroke-width="10" stroke-linecap="round" stroke-dasharray="1 22"/>
+
+  <!-- pickup pin -->
+  <g transform="translate(250 540)">
+    <circle r="34" fill="#22c55e" opacity=".18"/>
+    <circle r="14" fill="#22c55e"/>
+    <circle r="6" fill="#060a18"/>
+  </g>
+  <!-- drop-off pin -->
+  <g transform="translate(900 180)">
+    <path d="M0 0c-26-34-40-56-40-76a40 40 0 0 1 80 0c0 20-14 42-40 76z" fill="#22d3ee"/>
+    <circle cy="-76" r="15" fill="#060a18"/>
+  </g>
+
+  <!-- car on the route -->
+  <g transform="translate(560 360) rotate(-12)">
+    <rect x="-46" y="-22" width="92" height="44" rx="14" fill="#e9edf7"/>
+    <rect x="-24" y="-17" width="44" height="34" rx="8" fill="#1d6bff"/>
+    <circle cx="-30" cy="-24" r="7" fill="#0b1430"/><circle cx="30" cy="-24" r="7" fill="#0b1430"/>
+    <circle cx="-30" cy="24" r="7" fill="#0b1430"/><circle cx="30" cy="24" r="7" fill="#0b1430"/>
+  </g>
+
+  <!-- title -->
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="1210" y="560" text-anchor="end" font-size="96" font-weight="800" fill="#e9edf7">Pahatod</text>
+    <text x="1210" y="608" text-anchor="end" font-size="28" fill="#8a93a8">Ride with Us – Where Comfort Meets Convenience</text>
+  </g>
+</svg>

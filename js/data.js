@@ -210,6 +210,14 @@ const SITE = {
       ],
     },
     {
+      title: "Pahatod: Ride-Hailing Web App", status: "completed", period: "2024 — 2025",
+      description: "A Django ride-hailing system with separate passenger and driver accounts. Passengers register, request rides with pickup and drop-off locations, and track, cancel or review their bookings. Drivers register with their license, vehicle type and plate number, then accept pending ride requests from a dashboard and mark trips as completed. Rides move through pending, accepted, completed and canceled states.",
+      tags: ["Django", "Python", "SQLite"], live: "", repo: "",
+      images: [
+        "assets/projects/pahatod-cover.svg", // illustrated cover (no app screenshots yet)
+      ],
+    },
+    {
       title: "Quad-Drag-Do: Completing the Square Math Game", status: "completed", period: "2026",
       description: "Client project: I was the lead developer of this game-based learning app for a 4th-year research study by Math Major students of BiPSU School of Teacher Education (STED), \"Development and Validation of Quad-Drag-Do\". Students solve auto-generated quadratic equations by completing the square, dragging terms through each step across difficulty levels with a 5-life system, plus lessons and learning materials. Teachers manage classrooms, admissions and activities (quizzes, homework, exams), and an admin approves teacher accounts.",
       tags: ["Client Project", "Lead Developer", "Flutter", "Firebase"], live: "", repo: "",
@@ -286,6 +294,7 @@ const SITE = {
       items: [
         { name: "PHP", icon: "devicon-php-plain colored" },
         { name: "Python", icon: "devicon-python-plain colored" },
+        { name: "Django", icon: "devicon-django-plain" },
         { name: "MySQL", icon: "devicon-mysql-original colored" },
         { name: "Firebase", icon: "devicon-firebase-plain colored" },
       ],
