@@ -251,6 +251,14 @@ const SITE = {
       ],
       pdf: "", url: "",
     },
+    {
+      title: "Networking Basics", issuer: "Cisco Networking Academy", year: "May 2026",
+      description: "Completed Cisco's Networking Basics course, covering how networks and the internet work: network types and components, IP addressing, wired and wireless connections, and basic network communication. Cert ID: 9d7f15ef-c3e7-465e-9882-6194a2b65f6c.",
+      images: [
+        "assets/certificates/cisco-networking-basics-1.jpg", // rendered from the PDF
+      ],
+      pdf: "assets/certificates/cisco-networking-basics.pdf", url: "",
+    },
   ],
 
   // ---- Portfolio: Tech Stack ----
