@@ -27,7 +27,9 @@
 
 /* ============ Base ============ */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+/* overflow-x: nothing may widen the page past the screen (phones would allow zooming out);
+   "clip" is the modern version, "hidden" is the fallback for older browsers */
+html { scroll-behavior: smooth; scroll-padding-top: 100px; overflow-x: hidden; overflow-x: clip; }
 body {
   margin: 0;
   background: var(--bg);
@@ -37,6 +39,7 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  overflow-x: clip;
 }
 body.is-loading { overflow: hidden; }
 img { max-width: 100%; display: block; }
@@ -432,11 +435,16 @@ a.footer__loc:hover { color: var(--cyan); }
   .nav__botlabel { display: none; }
   .projects, .certs, .exps { grid-template-columns: 1fr; }
   .timeline::before, .tl::before { display: none; } /* no center line or dots on mobile */
-  .tl { grid-template-columns: 1fr; gap: 0; }
-  .tl:nth-child(even) .card { grid-column: 1; }
-  .tl { gap: 18px; }
-  .tl .card, .tl__photo, .tl:nth-child(even) .tl__photo { grid-column: 1; grid-row: auto; }
+  .tl { grid-template-columns: minmax(0, 1fr); gap: 18px; } /* minmax(0,…) lets the column shrink below its content width */
+  .tl__year { flex-wrap: wrap; }
+  .tl .card, .tl__photo, .tl:nth-child(even) .card, .tl:nth-child(even) .tl__photo { grid-column: 1; grid-row: auto; }
   .section { padding: 100px 0 60px; }
+}
+/* Single-column layouts: reveal from below, never from the sides.
+   Sideways starting positions stuck out past the screen edge and made phones zoom out. */
+@media (max-width: 1000px) {
+  [data-reveal="left"], [data-reveal="right"] { transform: translateY(40px); }
+  .tl [data-reveal="left"], .tl [data-reveal="right"] { --tx: 0px; }
 }
 @media (max-width: 560px) {
   .status-pill span { display: none; }
@@ -446,6 +454,7 @@ a.footer__loc:hover { color: var(--cyan); }
   .tabs { width: 100%; flex-wrap: wrap; }
   .tab { padding: 10px 12px; letter-spacing: .06em; font-size: 11px; flex: 1 1 40%; justify-content: center; gap: 6px; }
   .exp { flex-direction: column; padding: 22px; }
+  .tl .card { padding: 24px 20px; }
   .about__bio { text-align: left; } /* justified text gets gappy on narrow screens */
   .tab span[data-icon] { display: none; }
   .tech { width: calc(33.33% - 15px); min-width: 90px; }
