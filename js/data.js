@@ -79,8 +79,8 @@ const SITE = {
         "Information Management", "Data Structures and Algorithms", "Object-Oriented Programming",
         "Design and Analysis of Algorithms", "Automata Theory and Formal Languages", "Computer System Servicing",
       ],
-      stack: ["Flutter", "Dart", "PHP", "MySQL"],                          // PLACEHOLDER: confirm
-      project: "My first Flutter project: a mobile application that my team built and presented.",
+      stack: ["Flutter", "Dart", "TensorFlow Lite", "Hive"],
+      project: "CocoScan: my first Flutter app, a coconut leaf disease scanner using on-device AI to detect yellowing, caterpillar damage and flaccidity.",
       image: "assets/academic/year-2.jpg",
     },
     {
@@ -195,9 +195,13 @@ const SITE = {
       tags: ["PHP", "MySQL", "JavaScript"], images: [], live: "", repo: "",
     },
     {
-      title: "Mobile App", status: "developing", period: "20XX",
-      description: "PLACEHOLDER: a Flutter app you built (what it does and who it's for).",
-      tags: ["Flutter", "Dart", "Firebase"], images: [], live: "", repo: "",
+      title: "CocoScan: Coconut Leaf Disease Scanner", status: "completed", period: "2025",
+      description: "My first Flutter app, built with my team in 2nd year. Farmers scan a coconut leaf with the camera or upload a photo; one on-device AI model first checks that the image is a leaf, then a second model classifies it as Healthy, Yellowing, Caterpillar damage or Flaccidity with a confidence score and recommended actions. Scans are saved to a local history that works offline.",
+      tags: ["Flutter", "TensorFlow Lite", "Hive"], live: "", repo: "",
+      images: [
+        "assets/projects/cocoscan-1.png",   // app logo
+        "assets/academic/year-2.jpg",       // team presentation
+      ],
     },
   ],
 
