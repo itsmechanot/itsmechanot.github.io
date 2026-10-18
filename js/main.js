@@ -151,7 +151,7 @@
       ${imgs.length > 1 ? `<div class="slider__dots">${imgs.map((_, k) => `<button class="${k ? "" : "active"}" aria-label="Show photo ${k + 1}"></button>`).join("")}</div>` : ""}
     </div>`;
 
-  const STATUS = { deployed: "Deployed", developing: "Developing", completed: "Completed" };
+  const STATUS = { deployed: "Deployed", developing: "Developing", testing: "Under Testing", completed: "Completed" };
   $("#projects").innerHTML = S.projects.map((p, i) => {
     const st = STATUS[p.status] ? p.status : "developing";
     const imgs = p.images || [];

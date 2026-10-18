@@ -305,6 +305,8 @@ svg.i { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width:
 .status--deployed { color: #4ade80; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.3); }
 .status--developing { color: var(--amber); background: rgba(245,185,66,.12); border: 1px solid rgba(245,185,66,.3); }
 .status--developing .dot { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+.status--testing { color: #c084fc; background: rgba(168,85,247,.12); border: 1px solid rgba(168,85,247,.32); }
+.status--testing .dot { background: #c084fc; box-shadow: 0 0 8px #c084fc; }
 .status--completed { color: #60a5fa; background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.3); }
 .status--completed .dot { background: #60a5fa; box-shadow: 0 0 8px #60a5fa; animation: none; }
 .project__period { font-size: 12px; color: var(--cyan); letter-spacing: .06em; }

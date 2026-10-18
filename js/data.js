@@ -6,7 +6,7 @@ const SITE = {
   // ---- Identity ----
   name: "Christian Mandras Sapilan",
   firstName: "Christian",
-  brand: { main: "Dev", accent: "Christian" },    // navbar logo text
+  brand: { main: "Sapilan", accent: "Christian" },    // navbar logo text
   botName: "LOW_BOT",                            // name of the AI assistant
   domainTyped: "christiansapilan.dev",             // text typed in the intro loader
 
@@ -131,7 +131,7 @@ const SITE = {
   ],
 
   // ---- Portfolio: Projects ----
-  // status: "deployed" | "developing" | "completed"
+  // status: "deployed" | "developing" | "testing" | "completed"
   // images: put the pictures in assets/projects/ and list them in order. Two or more slide automatically:
   //   images: ["assets/projects/kacific-1.jpg", "assets/projects/kacific-2.jpg", "assets/projects/kacific-3.jpg"],
   //   images: [] shows a styled placeholder
@@ -210,9 +210,9 @@ const SITE = {
       ],
     },
     {
-      title: "LGU-DPWH IRMS: Infrastructure Reporting and Management System", status: "completed", period: "2026",
-      description: "A Django system built for DPWH and the LGUs of Biliran. Citizens report road and infrastructure issues with photos, GPS location and severity, and get a tracking code. LGU reviewers for each of the 8 municipalities endorse or return reports, and DPWH staff verify them and turn them into project proposals that move through the full procurement lifecycle: approval, bidding (RA 9184), award, notice to proceed, progress tracking, completion and the defects liability period. A public Leaflet map shows finished and ongoing projects, and the admin portal has Chart.js analytics.",
-      tags: ["Django", "Leaflet", "Chart.js", "Gov Tech"], live: "", repo: "",
+      title: "LGU-DPWH IRMS: Infrastructure Reporting and Management System", status: "testing", period: "2026",
+      description: "Solo project, currently under testing by DPWH. A Django system built for DPWH and the LGUs of Biliran. Citizens report road and infrastructure issues with photos, GPS location and severity, and get a tracking code. LGU reviewers for each of the 8 municipalities endorse or return reports, and DPWH staff verify them and turn them into project proposals that move through the full procurement lifecycle: approval, bidding (RA 9184), award, notice to proceed, progress tracking, completion and the defects liability period. A public Leaflet map shows finished and ongoing projects, and the admin portal has Chart.js analytics.",
+      tags: ["Solo Project", "Django", "Leaflet", "Gov Tech"], live: "", repo: "",
       images: [
         "assets/projects/dpwh-irms-1.jpg", // public home page
         "assets/projects/dpwh-irms-2.jpg", // admin dashboard (demo data)
