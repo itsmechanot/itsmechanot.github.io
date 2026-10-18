@@ -259,6 +259,14 @@ const SITE = {
       ],
       pdf: "assets/certificates/cisco-networking-basics.pdf", url: "",
     },
+    {
+      title: "Integrated OS: Be More Digi-TALINO", issuer: "Integrated Office Solutions, Inc.", year: "Sep 2025",
+      description: "Certificate of Participation for a webinar held via Zoom on September 5, 2025, focused on strengthening digital literacy: exploring productivity apps, mastering digital communication, conducting smart research, and ensuring data safety and security.",
+      images: [
+        "assets/certificates/digi-talino-1.jpg", // rendered from the PDF
+      ],
+      pdf: "assets/certificates/digi-talino.pdf", url: "",
+    },
   ],
 
   // ---- Portfolio: Tech Stack ----
