@@ -172,9 +172,15 @@ const SITE = {
       ],
     },
     {
-      title: "CCTV Security Systems", status: "completed", period: "20XX",
-      description: "PLACEHOLDER: CCTV projects (number of cameras, type of site).",
-      tags: ["Hikvision", "CCTV"], images: [], live: "", repo: "",
+      title: "Barangay CCTV: Poblacion, Culaba, Biliran", status: "completed", period: "2026",
+      description: "Installed 4 Hikvision Turbo HD 2MP color cameras for the barangay of Poblacion, Culaba, Biliran. Mounted the cameras on utility and streetlight poles, ran the cabling with HD video baluns and weatherproof junction boxes, and connected the new feeds to the barangay's monitoring station for 24/7 street coverage.",
+      tags: ["Hikvision", "CCTV", "Turbo HD", "4 Cameras"], live: "", repo: "",
+      images: [
+        "assets/projects/cctv-culaba-1.jpg", // 4 Hikvision cameras + materials
+        "assets/projects/cctv-culaba-2.jpg", // mounting on the utility pole
+        "assets/projects/cctv-culaba-3.jpg", // mounting on the streetlight pole
+        "assets/projects/cctv-culaba-4.jpg", // live feeds on the monitoring screen
+      ],
     },
     {
       title: "PisoWifi Setups", status: "completed", period: "20XX",
