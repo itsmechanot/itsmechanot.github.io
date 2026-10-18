@@ -211,10 +211,12 @@ const SITE = {
     },
     {
       title: "Pahatod: Ride-Hailing Web App", status: "completed", period: "2024 — 2025",
-      description: "A Django ride-hailing system with separate passenger and driver accounts. Passengers register, request rides with pickup and drop-off locations, and track, cancel or review their bookings. Drivers register with their license, vehicle type and plate number, then accept pending ride requests from a dashboard and mark trips as completed. Rides move through pending, accepted, completed and canceled states.",
-      tags: ["Django", "Python", "SQLite"], live: "", repo: "",
+      description: "A Django ride-hailing system with separate passenger and driver accounts. Passengers request rides on a Leaflet + OpenStreetMap map, where typed pickup and drop-off addresses are geocoded with Nominatim and pinned as markers, then track, cancel or review their bookings. Drivers register with their license, vehicle type and plate number, see their live location on a map dashboard, accept pending requests and mark trips completed.",
+      tags: ["Django", "Python", "Leaflet", "SQLite"], live: "", repo: "",
       images: [
-        "assets/projects/pahatod-cover.svg", // illustrated cover (no app screenshots yet)
+        "assets/projects/pahatod-cover.svg", // illustrated cover
+        "assets/projects/pahatod-2.jpg",     // Request a Ride form + Leaflet map
+        "assets/projects/pahatod-3.jpg",     // driver's Accept Rides list
       ],
     },
     {
