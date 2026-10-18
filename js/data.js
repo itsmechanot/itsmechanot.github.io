@@ -243,6 +243,14 @@ const SITE = {
       ],
       pdf: "", url: "",
     },
+    {
+      title: "Introduction to AI Literacy and Responsible Use", issuer: "CHED ACHIEVE × Mapúa University (with Arizona State University)", year: "Sep 2026",
+      description: "Micro-credential course on the foundations of artificial intelligence and how to use AI tools responsibly, offered under the Commission on Higher Education's ACHIEVE program. Certificate ID: A5W3YYBQJYODQ.",
+      images: [
+        "assets/certificates/ai-literacy-1.png", // the certificate
+      ],
+      pdf: "", url: "",
+    },
   ],
 
   // ---- Portfolio: Tech Stack ----
