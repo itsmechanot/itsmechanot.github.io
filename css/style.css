@@ -325,7 +325,6 @@ svg.i { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width:
 .project__links a { display: inline-flex; align-items: center; gap: 6px; color: var(--cyan); }
 .project__links a:hover { text-decoration: underline; }
 
-/* auto-fit + centered: one certificate sits in the middle instead of the left half */
 .certs { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 560px)); justify-content: center; gap: 34px; }
 .cert { position: relative; overflow: hidden; display: flex; flex-direction: column; transition: .4s var(--ease); }
 .cert:hover { transform: translateY(-8px); border-color: rgba(29,107,255,.35); box-shadow: 0 30px 60px rgba(0,0,0,.4), 0 0 40px rgba(29,107,255,.12); }
@@ -371,7 +370,7 @@ svg.i { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width:
 .tech { width: 112px; padding: 20px 10px 16px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; transition: .3s var(--ease); }
 .tech i { font-size: 40px; transition: .3s; }
 .tech i.devicon-express-original, .tech i.devicon-github-original { color: #e9edf7; }
-.tech i.devicon-django-plain { color: #44b78b; } /* Django's brand green, readable on the dark background */
+.tech i.devicon-django-plain { color: #44b78b; }
 .tech span { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); }
 .tech:hover { transform: translateY(-8px); border-color: rgba(34,211,238,.3); box-shadow: 0 16px 40px rgba(0,0,0,.35), 0 0 30px rgba(34,211,238,.08); }
 .tech:hover i { transform: scale(1.12); filter: drop-shadow(0 0 10px rgba(255,255,255,.25)); }
@@ -445,7 +444,7 @@ a.footer__loc:hover { color: var(--cyan); }
   .nav__burger { display: inline-grid; }
   .nav__botlabel { display: none; }
   .projects, .certs, .exps { grid-template-columns: 1fr; }
-  .timeline::before, .tl::before { display: none; } /* no center line or dots on mobile */
+  .timeline::before, .tl::before { display: none; }
   .tl { grid-template-columns: minmax(0, 1fr); gap: 18px; } /* minmax(0,…) lets the column shrink below its content width */
   .tl__year { flex-wrap: wrap; }
   .tl .card, .tl__photo, .tl:nth-child(even) .card, .tl:nth-child(even) .tl__photo { grid-column: 1; grid-row: auto; }
@@ -466,7 +465,7 @@ a.footer__loc:hover { color: var(--cyan); }
   .tab { padding: 10px 12px; letter-spacing: .06em; font-size: 11px; flex: 1 1 40%; justify-content: center; gap: 6px; }
   .exp { flex-direction: column; padding: 22px; }
   .tl .card { padding: 24px 20px; }
-  .about__bio { text-align: left; } /* justified text gets gappy on narrow screens */
+  .about__bio { text-align: left; }
   .tab span[data-icon] { display: none; }
   .tech { width: calc(33.33% - 15px); min-width: 90px; }
   .footer__grid { grid-template-columns: 1fr; }

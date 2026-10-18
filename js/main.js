@@ -1,6 +1,4 @@
-/* =====================================================================
-   Portfolio behaviour. Content lives in js/data.js; you rarely need to edit this file.
-   ===================================================================== */
+/* ============ Portfolio behaviour (content comes from js/data.js) ============ */
 (() => {
   "use strict";
 
@@ -47,8 +45,7 @@
   const hydrateIcons = (root = document) => $$("[data-icon]", root).forEach(el => { if (!el.firstElementChild) el.innerHTML = icon(el.dataset.icon); });
 
   /* ---------------- Hide unfinished content ---------------- */
-  // Entries still marked PLACEHOLDER in data.js stay off the page until they're filled in,
-  // so the public site never shows template text. Fill them in and they appear automatically.
+  // Unfinished entries (still containing PLACEHOLDER) are hidden from the public page.
   const S = SITE;
   const isPlaceholder = v => /PLACEHOLDER/.test(v || "");
   const isRealYear = v => v && !/20XX/.test(v);
@@ -96,14 +93,14 @@
 
   /* ---------------- About: photo, CV, stats ---------------- */
   const parts = S.name.trim().split(/\s+/);
-  const initials = (parts[0][0] + (parts.length > 1 ? parts[parts.length - 1][0] : "")).toUpperCase(); // first + last name
+  const initials = (parts[0][0] + (parts.length > 1 ? parts[parts.length - 1][0] : "")).toUpperCase();
   $("#photo").innerHTML = S.photo
     ? `<img src="${esc(S.photo)}" alt="Portrait of ${esc(S.name)}" />`
     : `<div class="photo__ph"><span>${esc(initials)}</span></div>`;
 
   const cvBtn = $("#cvBtn");
   if (S.cv) cvBtn.href = S.cv;
-  else cvBtn.remove(); // reappears once data.js has a cv path
+  else cvBtn.remove();
 
   const stats = [
     { icon: "code", value: S.projects.length, title: "Total Projects", sub: "Real-world projects delivered", color: "#22d3ee", link: "projects" },
@@ -140,7 +137,6 @@
 
   /* ---------------- Portfolio ---------------- */
   // Photo carousel markup shared by projects and certificates.
-  // zoom = true lets each photo open full size on click (used for certificates, so the text is readable).
   const sliderHTML = (imgs, label, zoom = false) => `
     <div class="slider" data-slider>
       <div class="slider__track">${imgs.map((src, k) => `
@@ -152,7 +148,6 @@
     </div>`;
 
   const STATUS = { deployed: "Deployed", developing: "Developing", testing: "Under Testing", completed: "Completed" };
-  // Projects are shown in two labelled groups, in the order listed in data.js.
   const PROJECT_GROUPS = [
     { type: "software", title: "Software Development", icon: "code", sub: "Web systems and mobile apps I've designed and built" },
     { type: "field", title: "IT & Field Installation", icon: "wifi", sub: "Hands-on network, solar, satellite and security installations" },
@@ -198,7 +193,6 @@
   // Carousel behaviour: auto-advance every 3s (5s on hover), dots + swipe.
   // A copy of the first photo sits after the last one, so looping always slides forward
   // (last → copy of first), then silently snaps back to the real first photo.
-  // Called once all carousels (projects + certificates) are on the page.
   const initSliders = () => $$("[data-slider]").forEach(sl => {
     const track = $(".slider__track", sl), dots = $$(".slider__dots button", sl), n = track.children.length;
     if (n < 2) return;
@@ -220,7 +214,7 @@
       if (k < 0) { snap(n); k = n - 1; }          // going back from the first photo
       setPos(k);
     };
-    const i = () => pos; // current position, used by swipe/autoplay below
+    const i = () => pos;
     dots.forEach((d, j) => d.addEventListener("click", e => { e.stopPropagation(); go(j); last = performance.now(); }));
     sl.addEventListener("mouseenter", () => (hovered = true));
     sl.addEventListener("mouseleave", () => (hovered = false));
@@ -358,7 +352,7 @@
     else finishLoading();
   })(t0);
   loader.addEventListener("click", finishLoading);
-  if (location.search.includes("nointro")) finishLoading(); // handy while editing: index.html?nointro
+  if (location.search.includes("nointro")) finishLoading();
 
   function finishLoading() {
     if (finished) return;
@@ -492,7 +486,7 @@
   body.addEventListener("click", e => { if (e.target.matches('a[href^="#"]')) toggleBot(false); });
 
   /* ---------------- Contact form ---------------- */
-  // Opens the visitor's email app. After deploying, you can switch this to Formspree/Netlify Forms.
+  // Opens the visitor's email app with the message pre-filled.
   $("#contactForm").addEventListener("submit", e => {
     e.preventDefault();
     const f = new FormData(e.target);
