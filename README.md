@@ -24,7 +24,8 @@ index.html          page structure
 css/style.css       all styling (tokens at the top, responsive rules at the bottom)
 js/data.js          ALL site content: edit this file to update text, projects, photos
 js/main.js          rendering, animations, slideshows, chatbot, contact form
-assets/             logo, favicon, profile photo
+cv/resume.html      editable source of the downloadable resume (exported to assets/Christian-Sapilan-CV.pdf)
+assets/             logo, favicon, profile photo, resume PDF
   academic/         one photo per school year
   projects/         project slideshow photos
   logos/            company logos

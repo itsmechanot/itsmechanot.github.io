@@ -24,7 +24,7 @@ const SITE = {
     "with hands-on experience in networking, fiber, satellite internet, solar and CCTV installation. " +
     "I like building things that work in the real world, both in code and in the field.",
   photo: "assets/profile.jpg",   // leave "" to show initials
-  cv: "",                    // e.g. "assets/Christian-Sapilan-CV.pdf" (leave "" to show "coming soon")
+  cv: "assets/Christian-Sapilan-CV.pdf",   // generated from cv/resume.html
   yearsExperience: 4,
 
   // ---- Contact ----

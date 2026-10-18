@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Christian Mandras Sapilan | Resume</title>
+<meta name="robots" content="noindex" />
+<!--
+  Source for assets/Christian-Sapilan-CV.pdf.
+  Edit this file, then regenerate the PDF (Chrome "Print > Save as PDF", A4, margins: default)
+  or ask Claude to re-export it.
+-->
+<style>
+  @page { size: A4; margin: 13mm 15mm 12mm; }
+  @media print { .page { width: auto !important; padding: 0 !important; } }
+  :root { --ink: #111827; --muted: #4b5563; --line: #d1d5db; --accent: #0e7490; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #fff; color: var(--ink); }
+  body { font-family: "Segoe UI", Arial, Helvetica, sans-serif; font-size: 10pt; line-height: 1.42; }
+  .page { width: 210mm; padding: 14mm 15mm 12mm; margin: 0 auto; }
+  h1 { font-size: 22pt; margin: 0; letter-spacing: .3px; }
+  .headline { font-size: 11pt; color: var(--accent); font-weight: 600; margin-top: 2px; }
+  .contact { margin-top: 6px; color: var(--muted); font-size: 9.5pt; }
+  .contact a { color: var(--muted); text-decoration: none; }
+  .contact span + span::before { content: "  |  "; color: var(--line); }
+  h2 { font-size: 10.5pt; text-transform: uppercase; letter-spacing: 1.4px; color: var(--accent); margin: 14px 0 6px; padding-bottom: 3px; border-bottom: 1.5px solid var(--accent); }
+  p { margin: 0; }
+  .item { margin-bottom: 8px; break-inside: avoid; }
+  .row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+  .title { font-weight: 700; }
+  .org { color: var(--muted); font-style: italic; }
+  .date { color: var(--muted); font-size: 9.5pt; white-space: nowrap; }
+  ul { margin: 3px 0 0; padding-left: 16px; }
+  li { margin: 1.5px 0; }
+  .skills { display: grid; grid-template-columns: 140px 1fr; gap: 3px 12px; }
+  .skills b { font-weight: 700; }
+  .tech { color: var(--muted); font-size: 9pt; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1>Christian Mandras Sapilan</h1>
+    <div class="headline">Computer Science Student &middot; Full-Stack Developer &middot; IT &amp; Network Technician</div>
+    <div class="contact">
+      <span><a href="mailto:itsmechanot@gmail.com">itsmechanot@gmail.com</a></span><span>Atipolo, Naval, Biliran, Philippines</span><span><a href="https://itsmechanot.github.io">itsmechanot.github.io</a></span><span><a href="https://github.com/itsmechanot">github.com/itsmechanot</a></span>
+    </div>
+  </header>
+
+  <h2>Profile</h2>
+  <p>4th-year Computer Science student at Biliran Province State University who builds full-stack web systems and mobile apps, from database design to deployment. Brings 4 years of hands-on IT experience as a working student at an internet service provider, plus field work in networking, satellite internet, solar power and CCTV installation. Runs a DTI-registered trading business.</p>
+
+  <h2>Education</h2>
+  <div class="item">
+    <div class="row"><span class="title">Bachelor of Science in Computer Science</span><span class="date">2023 &ndash; Present</span></div>
+    <div class="org">Biliran Province State University (BiPSU), Naval, Biliran &middot; currently in 4th year</div>
+    <ul><li>Relevant coursework: Data Structures and Algorithms, Object-Oriented Programming, Information Management, Software Engineering 1 &amp; 2, Networks and Communication, Operating Systems, Information Assurance and Security, Intelligent Systems, Human-Computer Interaction, Parallel and Distributed Computing</li></ul>
+  </div>
+
+  <h2>Experience</h2>
+  <div class="item">
+    <div class="row"><span class="title">IT Staff (Working Student)</span><span class="date">4 years &middot; weekends</span></div>
+    <div class="org">Xfiber Broadband</div>
+    <ul>
+      <li>Handle IT and network work for an internet service provider: fiber internet installation, network setup and troubleshooting.</li>
+      <li>Installed Xfiber PisoWifi coin-operated Wi-Fi machines across Biliran and Leyte, including LPB kit wiring, outdoor access points and captive-portal setup.</li>
+    </ul>
+  </div>
+  <div class="item">
+    <div class="row"><span class="title">Sole Proprietor</span><span class="date">Sep 2023 &ndash; Present</span></div>
+    <div class="org">Quadcore Office Supplies and Equipment Trading (DTI registered)</div>
+    <ul><li>Run my own business supplying office supplies and equipment.</li></ul>
+  </div>
+
+  <h2>Software Projects</h2>
+  <div class="item">
+    <div class="row"><span class="title">LGU-DPWH IRMS: Infrastructure Reporting and Management System</span><span class="date">2026</span></div>
+    <div class="org">Solo project, currently under testing by DPWH</div>
+    <ul>
+      <li>Citizens report road and infrastructure issues with photos, GPS location and severity and receive a tracking code; LGU reviewers for 8 municipalities endorse or return reports.</li>
+      <li>DPWH staff convert verified reports into projects that follow the full procurement lifecycle (approval, RA 9184 bidding, award, NTP, progress, completion, defects liability).</li>
+      <li class="tech">Django &middot; Leaflet maps &middot; Chart.js analytics &middot; SQLite</li>
+    </ul>
+  </div>
+  <div class="item">
+    <div class="row"><span class="title">RideAxis: Terminal Van Ride-Sharing Platform</span><span class="date">2025</span></div>
+    <div class="org">Solo project, deployed at rideaxis-1.onrender.com</div>
+    <ul>
+      <li>Passengers check van rides online with real-time seat availability on a visual seat layout, driver ratings and a terminal locator.</li>
+      <li>Drivers track trips with GPS on a live route map; terminal admins approve drivers, assign schedules and monitor a statistics dashboard.</li>
+      <li class="tech">Django &middot; PostgreSQL &middot; Gunicorn &middot; WhiteNoise &middot; Render</li>
+    </ul>
+  </div>
+  <div class="item">
+    <div class="row"><span class="title">Quad-Drag-Do: Completing the Square Math Game</span><span class="date">2026</span></div>
+    <div class="org">Lead developer, client project for a BiPSU STED Math Major research study</div>
+    <ul>
+      <li>Game-based learning app with auto-generated quadratic equations, difficulty levels, lessons, and student, teacher and admin roles (classrooms, quizzes, homework, exams).</li>
+      <li class="tech">Flutter &middot; Firebase (Auth, Firestore, Storage)</li>
+    </ul>
+  </div>
+  <div class="item">
+    <div class="row"><span class="title">CocoScan: Coconut Leaf Disease Scanner</span><span class="date">2025</span></div>
+    <ul>
+      <li>Mobile app using two on-device AI models: one confirms the photo is a leaf, the other classifies it as Healthy, Yellowing, Caterpillar damage or Flaccidity, with recommended actions and an offline scan history.</li>
+      <li class="tech">Flutter &middot; TensorFlow Lite &middot; Hive</li>
+    </ul>
+  </div>
+  <div class="item">
+    <div class="row"><span class="title">Pahatod (Ride-Hailing Web App) and Serenity Tours (Biliran Tourism Website)</span><span class="date">2024 &ndash; 2025</span></div>
+    <ul>
+      <li>Pahatod: passenger and driver accounts, ride requests geocoded with Nominatim on Leaflet maps, and a driver dashboard for accepting and completing rides.</li>
+      <li>Serenity Tours: tourism website for Biliran destinations, tour services and pricing.</li>
+      <li class="tech">Django &middot; Leaflet &middot; Bootstrap &middot; SQLite</li>
+    </ul>
+  </div>
+
+  <h2>IT &amp; Field Installation Projects</h2>
+  <div class="item">
+    <div class="row"><span class="title">Free Wi-Fi for All: Kacific Satellite Sites</span><span class="date">2022 &ndash; 2023</span></div>
+    <ul><li>Installed Kacific satellite internet sites for the government's Free Wi-Fi for All program in Biliran, Samar, Southern Leyte and Abuyog.</li></ul>
+  </div>
+  <div class="item">
+    <div class="row"><span class="title">Barangay CCTV: Poblacion, Culaba, Biliran</span><span class="date">Sep 2026</span></div>
+    <ul><li>Installed 4 Hikvision Turbo HD cameras on utility and streetlight poles and connected them to the barangay monitoring station.</li></ul>
+  </div>
+  <div class="item">
+    <div class="row"><span class="title">Solar Power Systems</span><span class="date">Biliran</span></div>
+    <ul><li>Mounted rooftop PV arrays and set up hybrid inverters (Deye, Demuda) with lithium batteries (SRNE, Retank) and labeled DC/AC protection boxes.</li></ul>
+  </div>
+
+  <h2>Skills</h2>
+  <div class="skills">
+    <b>Programming</b><span>Python, JavaScript, Dart, PHP, HTML, CSS, SQL</span>
+    <b>Frameworks</b><span>Django, Flutter, Bootstrap, Leaflet, Chart.js, TensorFlow Lite</span>
+    <b>Databases</b><span>PostgreSQL, MySQL, SQLite, Firebase Firestore, Hive</span>
+    <b>Tools &amp; Deployment</b><span>Git and GitHub, VS Code, Render, GitHub Pages, Figma, Canva</span>
+    <b>IT &amp; Field</b><span>Networking, fiber internet, Kacific and Starlink satellite internet, solar PV (Deye, SRNE), CCTV (Hikvision), PisoWifi</span>
+  </div>
+
+  <h2>Certifications &amp; Training</h2>
+  <ul>
+    <li><b>Deye Three Phase Inverter Training</b>, Deye Philippines &times; OnePoint Solar Marketing, Cebu City (Oct 2026)</li>
+    <li><b>Introduction to AI Literacy and Responsible Use</b>, CHED ACHIEVE &times; Map&uacute;a University (Sep 2026)</li>
+    <li><b>Basic Solar PV Design and Installation Training</b>, RenewaVolt, Tacloban City (Aug 2026)</li>
+    <li><b>Networking Basics</b>, Cisco Networking Academy (May 2026)</li>
+    <li><b>Integrated OS: Be More Digi-TALINO</b> webinar, Integrated Office Solutions, Inc. (Sep 2025)</li>
+  </ul>
+
+</div>
+</body>
+</html>
