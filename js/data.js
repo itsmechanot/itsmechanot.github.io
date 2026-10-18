@@ -210,7 +210,7 @@ const SITE = {
       ],
     },
     {
-      title: "RideAxis: Terminal Van Ride-Sharing Platform", status: "completed", period: "2025",
+      title: "RideAxis: Terminal Van Ride-Sharing Platform", status: "deployed", period: "2025",
       description: "Solo project, designed, built and deployed by me. \"Tired of going to the terminal just to check rides?\" RideAxis lets passengers see available van rides online with real-time seat availability on a visual van seat layout, driver profiles with 1–5 star ratings, and a terminal locator. Drivers manage their trips (scheduled → waiting → departed → completed) with GPS tracking shown on a live route map, while terminal admins approve drivers, assign schedules and monitor a statistics dashboard. Deployed on Render with PostgreSQL, Gunicorn and WhiteNoise. The free host sleeps when idle, so the live demo can take about a minute to wake up.",
       tags: ["Solo Project", "Django", "PostgreSQL", "Render"],
       live: "https://rideaxis-1.onrender.com/", repo: "https://github.com/itsmechanot/rideaxis",
