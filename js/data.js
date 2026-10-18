@@ -215,6 +215,15 @@ const SITE = {
       ],
       pdf: "assets/certificates/deye-training-certificate.pdf", url: "",
     },
+    {
+      title: "Basic Solar PV Design and Installation Training", issuer: "RenewaVolt", year: "Aug 2026",
+      description: "Hands-on solar PV training at Hotel Estrella, Tacloban City. Topics: PV panels and balance of system, solar PV system types, reading datasheets, electrical formulas, series and parallel connections, installation tools, ocular inspection, bill-based and load-based system sizing, matching PV modules to inverters, common installation errors, and system commissioning.",
+      images: [
+        "assets/certificates/renewavolt-training-1.jpg", // participant ID and string/array notes
+        // add the certificate here when you find it, e.g. "assets/certificates/renewavolt-training-2.jpg"
+      ],
+      pdf: "", url: "",
+    },
   ],
 
   // ---- Portfolio: Tech Stack ----
