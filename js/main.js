@@ -228,6 +228,7 @@
         <p class="exp__company">${esc(x.company)}</p>
         <p class="exp__desc">${esc(x.description)}</p>
         <div class="tags">${(x.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+        ${x.certificate ? `<div class="project__links exp__links"><a href="${esc(x.certificate)}" target="_blank" rel="noopener">View Certification ${icon("external")}</a></div>` : ""}
       </div>
     </article>`;
   }).join("");

@@ -350,6 +350,7 @@ svg.i { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width:
 .exp h3 { font-size: 19px; margin: 6px 0 4px; }
 .exp__company { font-weight: 700; color: #b7bfd1; margin-bottom: 12px; }
 .exp__desc { color: var(--muted); font-size: 14.5px; margin-bottom: 16px; }
+.exp__links { margin-top: 18px; padding-top: 0; }
 
 .stack-group { margin-bottom: 70px; }
 .tech .tech__svg { display: inline-flex; font-size: 38px; color: var(--cyan); filter: drop-shadow(0 0 8px rgba(34,211,238,.35)); transition: .3s; }

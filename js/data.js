@@ -122,10 +122,11 @@ const SITE = {
     {
       role: "Sole Proprietor",
       company: "Quadcore Office Supplies and Equipment Trading",
-      period: "Sep 2024 — Present",
+      period: "Sep 2023 — Present",   // DTI registration date: 06 September 2023
       logo: "",            // REMINDER: add the Quadcore logo
       description: "Run my own trading business supplying office supplies and equipment.",  // PLACEHOLDER: add details
-      tags: ["Business", "Procurement"],
+      tags: ["Business", "Procurement", "DTI Registered"],
+      certificate: "assets/documents/dti-business-name-certificate.pdf", // shown only as a "View Certification" link
     },
   ],
 
