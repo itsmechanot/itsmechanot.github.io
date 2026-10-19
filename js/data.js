@@ -158,7 +158,8 @@ const SITE = {
       description: "My first Flutter app, built with my team in 2nd year. Farmers scan a coconut leaf with the camera or upload a photo; one on-device AI model first checks that the image is a leaf, then a second model classifies it as Healthy, Yellowing, Caterpillar damage or Flaccidity with a confidence score and recommended actions. Scans are saved to a local history that works offline.",
       tags: ["Flutter", "TensorFlow Lite", "Hive"], live: "", repo: "",
       images: [
-        "assets/projects/cocoscan-1.png",
+        "assets/projects/cocoscan-2.jpg",
+        "assets/projects/cocoscan-3.jpg",
         "assets/academic/year-2.jpg",
       ],
     },
