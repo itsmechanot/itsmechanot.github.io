@@ -19,7 +19,7 @@
     send: '<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
     mail: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
     pin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
-    download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/>',
+    eye: '<path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/>',
     external: '<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
     award: '<circle cx="12" cy="8" r="6"/><path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11"/>',
     globe: '<circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>',
@@ -98,9 +98,33 @@
     ? `<img src="${esc(S.photo)}" alt="Portrait of ${esc(S.name)}" />`
     : `<div class="photo__ph"><span>${esc(initials)}</span></div>`;
 
+  // Resume opens in an on-page viewer (page images, no download link), as requested by the panel.
   const cvBtn = $("#cvBtn");
-  if (S.cv) cvBtn.href = S.cv;
-  else cvBtn.remove();
+  if (S.cvPages && S.cvPages.length) {
+    const cv = document.createElement("div");
+    cv.className = "cv-viewer";
+    cv.hidden = true;
+    cv.setAttribute("role", "dialog");
+    cv.setAttribute("aria-modal", "true");
+    cv.setAttribute("aria-label", `Resume of ${S.name}`);
+    cv.innerHTML = `
+      <div class="cv-viewer__bar">
+        <strong>Resume</strong><span class="mono">${esc(S.name)}</span>
+        <button class="icon-btn cv-viewer__close" aria-label="Close resume">${icon("x")}</button>
+      </div>
+      <div class="cv-viewer__pages">${S.cvPages.map((src, k) =>
+        `<img src="${esc(src)}" alt="Resume page ${k + 1} of ${S.cvPages.length}" loading="lazy" draggable="false" />`).join("")}</div>`;
+    document.body.appendChild(cv);
+    const closeCv = () => { cv.hidden = true; document.body.style.overflow = ""; cvBtn.focus(); };
+    cvBtn.addEventListener("click", () => {
+      cv.hidden = false; document.body.style.overflow = "hidden";
+      $(".cv-viewer__pages", cv).scrollTop = 0; $(".cv-viewer__close", cv).focus();
+    });
+    $(".cv-viewer__close", cv).addEventListener("click", closeCv);
+    cv.addEventListener("click", e => { if (e.target === cv) closeCv(); });
+    cv.addEventListener("contextmenu", e => { if (e.target.matches("img")) e.preventDefault(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape" && !cv.hidden) closeCv(); });
+  } else cvBtn.remove();
 
   const stats = [
     { icon: "code", value: S.projects.length, title: "Total Projects", sub: "Real-world projects delivered", color: "#22d3ee", link: "projects" },

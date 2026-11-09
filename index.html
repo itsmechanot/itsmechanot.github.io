@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
   <!-- ?v=N forces browsers to re-download after changes: bump the number when you edit these files -->
-  <link rel="stylesheet" href="css/style.css?v=14" />
+  <link rel="stylesheet" href="css/style.css?v=15" />
 </head>
 <body class="is-loading">
 
@@ -118,7 +118,7 @@
             <h3 class="about__name" data-bind="name"></h3>
             <p class="about__bio" data-bind-html="aboutBio"></p>
             <div class="btn-row">
-              <a class="btn btn--purple" id="cvBtn" download><span data-icon="download"></span> Download CV</a>
+              <button type="button" class="btn btn--purple" id="cvBtn" aria-haspopup="dialog"><span data-icon="eye"></span> View Resume</button>
               <a href="#portfolio" class="btn btn--ghost"><span data-icon="code"></span> View Projects</a>
             </div>
           </div>
@@ -217,7 +217,7 @@
     <p class="footer__copy mono">© <span id="year"></span> <strong data-bind="name"></strong>. All rights reserved.</p>
   </footer>
 
-  <script src="js/data.js?v=35"></script>
-  <script src="js/main.js?v=10"></script>
+  <script src="js/data.js?v=36"></script>
+  <script src="js/main.js?v=11"></script>
 </body>
 </html>
