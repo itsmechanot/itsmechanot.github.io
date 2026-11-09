@@ -5,7 +5,7 @@ const SITE = {
   firstName: "Christian",
   brand: { main: "Sapilan", accent: "Christian" },
   botName: "LOW_BOT",
-  domainTyped: "christiansapilan.dev",
+  domainTyped: "itsmechanot.github.io",
 
   // ---- Hero ----
   titleTop: "Full-Stack",
