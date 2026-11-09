@@ -41,7 +41,7 @@
     moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
     bot: '<path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>',
   };
-  const logo = () => `<img src="assets/logo.svg" alt="" class="brand__img" />`;
+  const logo = () => `<img src="assets/logo.svg" alt="" class="brand__img brand__img--dark" /><img src="assets/logo-light.svg" alt="" class="brand__img brand__img--light" />`;
   const icon = name => name === "logo" ? logo() : `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${P[name] || ""}</svg>`;
   const hydrateIcons = (root = document) => $$("[data-icon]", root).forEach(el => { if (!el.firstElementChild) el.innerHTML = icon(el.dataset.icon); });
 
