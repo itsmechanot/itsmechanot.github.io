@@ -38,6 +38,7 @@
     network: '<rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/>',
     cable: '<path d="M17 21v-2a1 1 0 0 1-1-1v-1a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1"/><path d="M19 15V6.5a3.5 3.5 0 0 0-7 0v11a3.5 3.5 0 0 1-7 0V9"/><path d="M21 21v-2h-4"/><path d="M3 5h4V3"/><path d="M7 5a1 1 0 0 1 1 1v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1V3"/>',
     briefcase: '<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/>',
+    moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
     bot: '<path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>',
   };
   const logo = () => `<img src="assets/logo.svg" alt="" class="brand__img" />`;
@@ -444,6 +445,25 @@
     if (en.isIntersecting) links.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id));
   }), { rootMargin: "-45% 0px -50% 0px" });
   $$("main section[id]").forEach(s => spy.observe(s));
+
+  // light / dark theme (choice is remembered per visitor)
+  const themeBtn = $("#themeToggle"), themeMeta = $('meta[name="theme-color"]');
+  const applyTheme = light => {
+    document.documentElement.toggleAttribute("data-theme", light);
+    if (light) document.documentElement.dataset.theme = "light";
+    const next = light ? "dark" : "light";
+    themeBtn.innerHTML = icon(light ? "moon" : "sun");
+    themeBtn.setAttribute("aria-label", `Switch to ${next} mode`);
+    themeBtn.title = `Switch to ${next} mode`;
+    themeBtn.setAttribute("aria-pressed", light);
+    themeMeta.content = light ? "#f4f7fb" : "#060a18";
+  };
+  applyTheme(document.documentElement.dataset.theme === "light");
+  themeBtn.addEventListener("click", () => {
+    const light = document.documentElement.dataset.theme !== "light";
+    applyTheme(light);
+    try { localStorage.setItem("theme", light ? "light" : "dark"); } catch (e) {}
+  });
 
   // mobile menu
   const navLinks = $("#navLinks"), burger = $("#burger");
