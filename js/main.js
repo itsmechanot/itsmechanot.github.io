@@ -315,11 +315,37 @@
     <span class="lightbox__count mono"></span>`;
   document.body.appendChild(lb);
   const lbImg = $("img", lb), lbCount = $(".lightbox__count", lb);
-  let gallery = [], gi = 0, lbX = null;
+  let gallery = [], gi = 0, lbX = null, dragX = 0, sliding = false;
+  const SLIDE_MS = 280;
   const showPhoto = k => {
     gi = (k + gallery.length) % gallery.length;
     lbImg.src = gallery[gi].src; lbImg.alt = gallery[gi].alt;
     lbCount.textContent = `${gi + 1} / ${gallery.length}`;
+    [1, -1].forEach(d => { new Image().src = gallery[(gi + d + gallery.length) % gallery.length].src; }); // preload neighbours
+  };
+  const moveImg = (x, animate) => {
+    lbImg.style.transition = animate ? `transform ${SLIDE_MS}ms var(--ease), opacity ${SLIDE_MS}ms ease` : "none";
+    lbImg.style.transform = x ? `translateX(${x}px)` : "";
+    lbImg.style.opacity = x ? Math.max(0.15, 1 - Math.abs(x) / innerWidth) : "";
+  };
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  // Slide the current photo out, load the next one off-screen on the other side, then slide it in.
+  // dir = 1 for next (photo leaves to the left), -1 for previous.
+  const slideTo = async dir => {
+    if (sliding || gallery.length < 2) return;
+    if (reduceMotion) { showPhoto(gi + dir); return; }
+    sliding = true;
+    const dist = Math.min(innerWidth * 0.6, 520);
+    moveImg(-dir * dist, true);
+    const next = new Image(); next.src = gallery[(gi + dir + gallery.length) % gallery.length].src;
+    const loaded = next.complete ? Promise.resolve() : new Promise(r => { next.onload = next.onerror = r; });
+    await Promise.all([wait(SLIDE_MS), Promise.race([loaded, wait(1500)])]);
+    showPhoto(gi + dir);
+    moveImg(dir * dist, false);
+    void lbImg.offsetWidth;
+    moveImg(0, true);
+    await wait(SLIDE_MS);
+    sliding = false;
   };
   const closeLb = () => { lb.hidden = true; document.body.style.overflow = ""; };
   document.addEventListener("click", e => {
@@ -328,24 +354,35 @@
     gallery = [...z.closest(".slider__track").querySelectorAll(".slide:not([aria-hidden]) img")]
       .map(i => ({ src: i.getAttribute("src"), alt: i.alt }));
     showPhoto(Math.max(0, gallery.findIndex(g => g.src === z.getAttribute("src"))));
+    moveImg(0, false);
     lb.classList.toggle("lightbox--single", gallery.length < 2);
     lb.hidden = false; document.body.style.overflow = "hidden";
   });
   $(".lightbox__close", lb).addEventListener("click", closeLb);
-  $(".lightbox__nav--prev", lb).addEventListener("click", () => showPhoto(gi - 1));
-  $(".lightbox__nav--next", lb).addEventListener("click", () => showPhoto(gi + 1));
+  $(".lightbox__nav--prev", lb).addEventListener("click", () => slideTo(-1));
+  $(".lightbox__nav--next", lb).addEventListener("click", () => slideTo(1));
   lb.addEventListener("click", e => { if (e.target === lb) closeLb(); });
-  lb.addEventListener("touchstart", e => { lbX = e.touches[0].clientX; }, { passive: true });
-  lb.addEventListener("touchend", e => {
-    if (lbX === null || gallery.length < 2) return;
-    const dx = e.changedTouches[0].clientX - lbX; lbX = null;
-    if (Math.abs(dx) > 40) showPhoto(gi + (dx < 0 ? 1 : -1));
+  // While swiping, the photo follows the finger; a short swipe springs back.
+  lb.addEventListener("touchstart", e => {
+    if (sliding || gallery.length < 2) return;
+    lbX = e.touches[0].clientX; dragX = 0;
+  }, { passive: true });
+  lb.addEventListener("touchmove", e => {
+    if (lbX === null) return;
+    dragX = e.touches[0].clientX - lbX;
+    moveImg(dragX, false);
+  }, { passive: true });
+  lb.addEventListener("touchend", () => {
+    if (lbX === null) return;
+    lbX = null;
+    if (Math.abs(dragX) > 50) slideTo(dragX < 0 ? 1 : -1);
+    else moveImg(0, true);
   });
   document.addEventListener("keydown", e => {
     if (lb.hidden) return;
     if (e.key === "Escape") closeLb();
-    else if (gallery.length > 1 && e.key === "ArrowRight") showPhoto(gi + 1);
-    else if (gallery.length > 1 && e.key === "ArrowLeft") showPhoto(gi - 1);
+    else if (e.key === "ArrowRight") slideTo(1);
+    else if (e.key === "ArrowLeft") slideTo(-1);
   });
 
   $("#stack").innerHTML = S.techStack.map(g => `
