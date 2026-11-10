@@ -38,6 +38,8 @@
     network: '<rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/>',
     cable: '<path d="M17 21v-2a1 1 0 0 1-1-1v-1a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1"/><path d="M19 15V6.5a3.5 3.5 0 0 0-7 0v11a3.5 3.5 0 0 1-7 0V9"/><path d="M21 21v-2h-4"/><path d="M3 5h4V3"/><path d="M7 5a1 1 0 0 1 1 1v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1V3"/>',
     briefcase: '<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/>',
+    prev: '<path d="m15 18-6-6 6-6"/>',
+    next: '<path d="m9 18 6-6-6-6"/>',
     moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
     bot: '<path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/>',
   };
@@ -162,12 +164,12 @@
 
   /* ---------------- Portfolio ---------------- */
   // Photo carousel markup shared by projects and certificates.
-  const sliderHTML = (imgs, label, zoom = false) => `
+  const sliderHTML = (imgs, label) => `
     <div class="slider" data-slider>
       <div class="slider__track">${imgs.map((src, k) => `
         <div class="slide">
           <div class="slide__bg" style="background-image:url('${esc(src)}')"></div>
-          <img src="${esc(src)}" alt="${esc(label)}, photo ${k + 1} of ${imgs.length}" loading="lazy"${zoom ? ` data-zoom="${esc(src)}"` : ""} />
+          <img src="${esc(src)}" alt="${esc(label)}, photo ${k + 1} of ${imgs.length}" loading="lazy" data-zoom />
         </div>`).join("")}</div>
       ${imgs.length > 1 ? `<div class="slider__dots">${imgs.map((_, k) => `<button class="${k ? "" : "active"}" aria-label="Show photo ${k + 1}"></button>`).join("")}</div>` : ""}
     </div>`;
@@ -277,7 +279,7 @@
     return `
     <article class="cert card" style="--d:${i * 0.08}s">
       <div class="cert__media${imgs.length ? "" : " cert__media--ph"}">
-        ${imgs.length ? sliderHTML(imgs, c.title, true) : `${icon("award")}<small class="mono">Certificate image coming soon</small>`}
+        ${imgs.length ? sliderHTML(imgs, c.title) : `${icon("award")}<small class="mono">Certificate image coming soon</small>`}
         <span class="cert__num">${String(i + 1).padStart(2, "0")}</span>
       </div>
       <div class="cert__body">
@@ -297,22 +299,54 @@
   }
   initSliders();
 
-  // full-size certificate viewer
+  // Full-screen photo gallery for project and certificate photos: opens on the clicked photo,
+  // then swipe, arrow buttons or keyboard arrows move through that card's photos.
   const lb = document.createElement("div");
   lb.className = "lightbox";
   lb.hidden = true;
-  lb.innerHTML = `<button class="icon-btn lightbox__close" aria-label="Close">${icon("x")}</button><img alt="" />`;
+  lb.setAttribute("role", "dialog");
+  lb.setAttribute("aria-modal", "true");
+  lb.setAttribute("aria-label", "Photo viewer");
+  lb.innerHTML = `
+    <button class="icon-btn lightbox__close" aria-label="Close">${icon("x")}</button>
+    <button class="icon-btn lightbox__nav lightbox__nav--prev" aria-label="Previous photo">${icon("prev")}</button>
+    <img alt="" />
+    <button class="icon-btn lightbox__nav lightbox__nav--next" aria-label="Next photo">${icon("next")}</button>
+    <span class="lightbox__count mono"></span>`;
   document.body.appendChild(lb);
+  const lbImg = $("img", lb), lbCount = $(".lightbox__count", lb);
+  let gallery = [], gi = 0, lbX = null;
+  const showPhoto = k => {
+    gi = (k + gallery.length) % gallery.length;
+    lbImg.src = gallery[gi].src; lbImg.alt = gallery[gi].alt;
+    lbCount.textContent = `${gi + 1} / ${gallery.length}`;
+  };
   const closeLb = () => { lb.hidden = true; document.body.style.overflow = ""; };
   document.addEventListener("click", e => {
     const z = e.target.closest("[data-zoom]");
-    if (z) {
-      const img = $("img", lb);
-      img.src = z.dataset.zoom; img.alt = z.alt;
-      lb.hidden = false; document.body.style.overflow = "hidden";
-    } else if (!lb.hidden && !e.target.closest(".lightbox img")) closeLb();
+    if (!z) return;
+    gallery = [...z.closest(".slider__track").querySelectorAll(".slide:not([aria-hidden]) img")]
+      .map(i => ({ src: i.getAttribute("src"), alt: i.alt }));
+    showPhoto(Math.max(0, gallery.findIndex(g => g.src === z.getAttribute("src"))));
+    lb.classList.toggle("lightbox--single", gallery.length < 2);
+    lb.hidden = false; document.body.style.overflow = "hidden";
   });
-  document.addEventListener("keydown", e => { if (e.key === "Escape" && !lb.hidden) closeLb(); });
+  $(".lightbox__close", lb).addEventListener("click", closeLb);
+  $(".lightbox__nav--prev", lb).addEventListener("click", () => showPhoto(gi - 1));
+  $(".lightbox__nav--next", lb).addEventListener("click", () => showPhoto(gi + 1));
+  lb.addEventListener("click", e => { if (e.target === lb) closeLb(); });
+  lb.addEventListener("touchstart", e => { lbX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener("touchend", e => {
+    if (lbX === null || gallery.length < 2) return;
+    const dx = e.changedTouches[0].clientX - lbX; lbX = null;
+    if (Math.abs(dx) > 40) showPhoto(gi + (dx < 0 ? 1 : -1));
+  });
+  document.addEventListener("keydown", e => {
+    if (lb.hidden) return;
+    if (e.key === "Escape") closeLb();
+    else if (gallery.length > 1 && e.key === "ArrowRight") showPhoto(gi + 1);
+    else if (gallery.length > 1 && e.key === "ArrowLeft") showPhoto(gi - 1);
+  });
 
   $("#stack").innerHTML = S.techStack.map(g => `
     <div class="stack-group">
