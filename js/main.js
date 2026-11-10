@@ -186,12 +186,12 @@
       <div class="project__media">
         ${media}
         <span class="status status--${st}"><i class="dot"></i>${STATUS[st]}</span>
-        <div class="project__tags">${p.tags.map(t => `<span>${esc(t)}</span>`).join("")}</div>
       </div>
       <div class="project__body">
         ${isRealYear(p.period) ? `<small class="project__period mono">${esc(p.period)}</small>` : ""}
         <h3>${esc(p.title)}</h3>
         <p>${esc(p.description)}</p>
+        <div class="project__tags">${p.tags.map(t => `<span>${esc(t)}</span>`).join("")}</div>
         ${p.live || p.repo ? `<div class="project__links">
           ${p.live ? `<a href="${esc(p.live)}" target="_blank" rel="noopener">Live demo ${icon("external")}</a>` : ""}
           ${p.repo ? `<a href="${esc(p.repo)}" target="_blank" rel="noopener">Source ${icon("github")}</a>` : ""}

@@ -83,7 +83,6 @@
 :root[data-theme="light"] .socials a:hover { box-shadow: 0 10px 24px rgba(14,116,144,.18); }
 :root[data-theme="light"] .code-win { background: #0f172a; }
 /* elements that sit on photos or dark overlays keep light text in both themes */
-:root[data-theme="light"] .project__tags span,
 :root[data-theme="light"] .lightbox,
 :root[data-theme="light"] .cv-viewer { color: #e9edf7; }
 :root[data-theme="light"] .tl__photo figcaption { color: #67e8f9; }
@@ -375,9 +374,9 @@ svg.i { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width:
 .slider__dots button { width: 7px; height: 7px; padding: 0; border-radius: 99px; background: rgba(255,255,255,.45); transition: .3s var(--ease); }
 .slider__dots button:hover { background: #fff; }
 .slider__dots button.active { width: 22px; background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
-.project__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 55%, rgba(6,10,24,.75)); pointer-events: none; }
-.project__tags { position: absolute; left: 16px; bottom: 14px; z-index: 1; display: flex; gap: 8px; flex-wrap: wrap; }
-.project__tags span { font-family: var(--f-mono); font-size: 12px; padding: 4px 10px; border-radius: 6px; background: rgba(6,10,24,.75); border: 1px solid var(--border-2); backdrop-filter: blur(6px); }
+.project__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 78%, rgba(6,10,24,.45)); pointer-events: none; }
+.project__tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.project__tags span { font-family: var(--f-mono); font-size: 12px; padding: 4px 10px; border-radius: 6px; color: var(--text-2); background: var(--tint); border: 1px solid var(--border-2); }
 .status { position: absolute; top: 14px; right: 14px; z-index: 1; display: inline-flex; align-items: center; gap: 7px; font-family: var(--f-mono); font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 5px 11px; border-radius: 99px; backdrop-filter: blur(6px); }
 .status--deployed { color: #4ade80; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.3); }
 .status--developing { color: var(--amber); background: rgba(245,185,66,.12); border: 1px solid rgba(245,185,66,.3); }
